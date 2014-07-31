@@ -1,0 +1,116 @@
+<title><?php echo $this->pageTitle='インフォメーション登録・更新 ｜ 該非判定WEBシステム ｜ 株式会社ディスコ'?>
+</title>
+<script type="text/JavaScript">
+$(function(){
+    $("#information tbody tr:even").addClass("even");
+    $("#information tbody tr:odd").addClass("odd");
+});
+</script>
+
+<div id="contents" class="infoud text03m">
+    <div class="infoudcontents">
+        <h2>インフォメーション登録・更新</h2>
+        <p class="outline">
+            <span class="formabsolute">必須</span>のついている項目は必ずご入力ください
+        </p>
+        <div class="infoudtable">
+            <form id="submitForm" action="/admin-information/confirm-edit"    method="post">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th class="infoudtablebb">タイトル<span class="formabsolute">必須</span>
+                            </th>
+                            <td class="infoudtablebb"><?php echo $this->formText('title', $this->request->title, array('class' => 'w300', 'style' => 'margin-left: -45px'));?>(全角半角50文字以内入力)
+                                <br>
+                                <div style="color: red; text-align: left;">
+                                <?php echo $this->formError('title'); ?>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="infoudtablebb" valign="top"
+                                style="border-bottom: none;">詳細(HTML入力可)<span
+                                class="formabsolute">必須</span>
+                            </th>
+                            <td class="infoudtabletextarea"><?php echo $this->formTextarea('detail', $this->request->detail, array('size' => '5','class' => 'w300'));?><div style="text-align: left;">(全角・半角入力)</div>
+                                <br>
+                                <div style="color: red; text-align: left;">
+                                <?php echo $this->formError('detail'); ?>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <?php echo $this->formHidden('token', $this->token);?>
+                <?php echo $this->formHidden('id', $this->request->id); ?>
+                <?php echo $this->formHidden('create_date', $this->request->create_date); ?>
+                <table class="ztable_horizontal">
+                    <tr>
+                        <td><?php echo $this->formButton('btPreview', 'プレビュー', array('class' => 'zbtn_back', 'onclick'=> '')); ?>
+                        </td>
+                        <td><?php echo $this->formButtonTo('btBack', '戻る', '/admin-information/list', array('class' => 'zbtn_back')); ?>
+                        </td>
+                        <td><?php echo $this->formButton(null, '変更', array('class' => 'zbtn_short','onclick'=> 'onConfirmEdit();')); ?>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+        <!-- yes/no dialog -->
+        <div class="modal" id="yesno" title="確認">
+            <p>編集します。よろしいですか？</p>
+        </div>
+
+<script type="text/javascript">
+
+    function onClickSubmit(){
+        var submitForm = document.getElementById('submitForm');
+        submitForm.action ='/admin-information/confirm-edit';
+        submitForm.target ='_self';
+        submitForm.submit();
+    }
+
+    function onConfirmEdit() {
+        for(i = 0; i < wnds.length; ++i){
+            wnds[i].close();
+        }
+        $("#yesno" ).dialog({
+         resizable: false,
+         height:140,
+         modal: true,
+         buttons: {
+             "はい": function() {
+                var submitForm = document.getElementById('submitForm');
+                submitForm.action ='/admin-information/confirm-edit';
+                submitForm.target ='_self';
+               $("#submitForm").submit();
+             },
+             "キャンセル": function() {
+                 $( this ).dialog( "close" );
+             }
+         }
+     });
+    }
+
+    var wnds = new Array();
+    $('#btPreview').click(function(){
+    	var id = $('#id').val();
+        var title = $('#title').val();
+        var create_date = $('#create_date').val();
+        var detail = $('#detail').val().replace(/\n/g,"<br>");
+        for(i = 0; i < wnds.length; ++i){
+            wnds[i].close();
+        }
+        wnds[wnds.length] = window.open('/admin-information/editpreview?create_date='+create_date+'&title='+title+'&detail='+detail);
+    });
+
+    $('#btBack').click(function(){
+        for(i = 0; i < wnds.length; ++i){
+            wnds[i].close();
+        }
+    });
+</script>

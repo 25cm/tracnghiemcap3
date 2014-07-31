@@ -1,0 +1,17 @@
+<div id="header">
+	<h1>
+		<a href="http://www.disco.co.jp"><img src="/resources/image/logo.jpg"
+			alt="DISCO" width="205" height="48" border="0"> </a>
+	</h1>
+	<p>
+		<a id="logout" href="/auth/logout">ログアウト</a>
+	</p>
+</div>
+<script type="text/javascript">
+$('#logout').click(function(){
+    for(i = 0; i < wnds.length; ++i)
+        wnds[i].close();
+    for(i = 0; i < wnds2.length; ++i)
+        wnds2[i].close();
+});
+</script>
