@@ -1,8 +1,19 @@
 <?php
 
-define('APPLICATION_ENV', getenv('APPLICATION_ENV'));
-define('APPLICATION_PATH', getenv('APPLICATION_PATH'));
-//define('FRAMEWORK_PATH', getenv('FRAMEWORK_PATH'));
+// define('APPLICATION_ENV', getenv('APPLICATION_ENV'));
+// define('APPLICATION_PATH', getenv('APPLICATION_PATH'));
+
+// Define path to application directory
+defined('APPLICATION_PATH')
+|| define('APPLICATION_PATH',
+realpath(dirname(__FILE__) . '/../application'));
+
+// Define application environment
+defined('APPLICATION_ENV')
+|| define('APPLICATION_ENV',
+(getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV')
+: 'production'));
+
 define('MODULE_PATH', APPLICATION_PATH . '/modules');
 
 define('APP_BASE', APPLICATION_PATH . '/../');
