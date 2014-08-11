@@ -1,6 +1,6 @@
 <script type="text/javascript">
 <!--
-// メニューにtitle付け
+// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã�«titleä»˜ã�‘
 //-->
 
 window.onerror = function(){return true;}
@@ -30,25 +30,25 @@ $(document).ready(function() {
 
 
 <?php
-if(Auth_Info::isLoggedUser())
-$this->role = Auth_Info::getUser()->user_type;
+// if(Auth_Info::isLoggedUser())
+// $this->role = Auth_Info::getUser()->user_type;
 ?>
 
 <div id="gnavi">
 	<ul class="dropdown">
-		<li class="gnavi01"><a id="toplistmenu" href="/top/list">TOP</a></li>
-		<?php if(strcmp($this->role,MUsers::DISCO_USER) === 0 ):?>
-		      <li class="gnavi02"><a id="duissuemenu" href="/du-issue/request" class="issuerequest">発行依頼</a></li>
-		      <li class="gnavi03"><a id="duissuehistmenu" href="/du-issued-hist/list">発行履歴一覧</a></li>
-		<?php elseif (strcmp($this->role,MUsers::END_USER) === 0 ):?>
-		      <li class="gnavi02"><a id="euissuemenu" href="/eu-issue/request" class="issuerequest">発行依頼</a></li>
-		      <li class="gnavi03"><a id="euissuehistmenu" href="/eu-issued-hist/list">発行履歴一覧</a></li>
-		<?php endif;?>
-        <li class="gnavi04"><a id="inquirymenu" href="/inquiry/inquiry">お問い合わせ</a>
+		<li class="gnavi01"><a id="toplistmenu" href="/top/list"></a></li>
+		<?php //if(strcmp($this->role,MUsers::DISCO_USER) === 0 ):?>
+		      <li class="gnavi02"><a id="duissuemenu" href="/du-issue/request" class="issuerequest">ç™ºè¡Œä¾�é ¼</a></li>
+		      <li class="gnavi03"><a id="duissuehistmenu" href="/du-issued-hist/list">ç™ºè¡Œå±¥æ­´ä¸€è¦§</a></li>
+		<?php //elseif (strcmp($this->role,MUsers::END_USER) === 0 ):?>
+<!-- 		      <li class="gnavi02"><a id="euissuemenu" href="/eu-issue/request" class="issuerequest">ç™ºè¡Œä¾�é ¼</a></li> -->
+<!-- 		      <li class="gnavi03"><a id="euissuehistmenu" href="/eu-issued-hist/list">ç™ºè¡Œå±¥æ­´ä¸€è¦§</a></li> -->
+		<?php //endif;?>
+        <li class="gnavi04"><a id="inquirymenu" href="/inquiry/inquiry">ã�Šå•�ã�„å�ˆã‚�ã�›</a>
         </li>
 	</ul>
 </div>
-<?php echo $this->formHidden('fqdn', Zynas_Registry::getConfig()->system->fqdn);?>
+<?php //echo $this->formHidden('fqdn', Zynas_Registry::getConfig()->system->fqdn);?>
 
 <script type="text/javascript">
 wnds = new Array();

@@ -20,7 +20,7 @@
 	href="/resources/scripts/jquery.ui/redmond/jquery-ui-1.9.1.custom.min.css" />
 <title><?php echo $this->pageTitle ;?></title>
 <?php if ($this->useDatePicker): ?>
-<?php // DatePicker用のCSS,JSを定義 ?>
+<?php // DatePickerç”¨ã�®CSS,JSã‚’å®šç¾© ?>
 <link rel="stylesheet" type="text/css"
 	href="/resources/scripts/jquery.ui/redmond/jquery-ui-1.9.1.custom.min.css" />
 <script type="text/javascript"
@@ -33,7 +33,7 @@
 
 
 
-<?php /* TODO 一時退避
+<?php /* TODO ä¸€æ™‚é€€é�¿
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -74,17 +74,17 @@ echo '<meta property="' . $k . '" content="' . $v . '" />' . "\n";
 	<div id="z_layout_page">
 	<?php //if (!$this->isNotHeader): ?>
 		<div id="z_layout_header">
-			<!-- **** ヘッダー ***** -->
+			<!-- **** ãƒ˜ãƒƒãƒ€ãƒ¼ ***** -->
 		<?php echo $this->render('_partial/header.phtml'); ?>
 		</div>
 		<!-- #z_layout_header -->
 		<div id="z_layout_body">
 			<div id="z_layout_box_menu">
-				<!-- **** メニュー ***** -->
+				<!-- **** ãƒ¡ãƒ‹ãƒ¥ãƒ¼ ***** -->
 			<?php //if(strcmp($this->role,MUsers::DISCO_ADMIN) === 0 ):?>
 			    <?php //echo $this->render('_partial/menuadmin.phtml');?>
 			<?php //else: ?>			        
-			    <?php //echo $this->render('_partial/menu.phtml'); ?>
+			    <?php echo $this->render('_partial/menu.phtml'); ?>
 			<?php //endif;?>    
 	<?php //endif; ?>
 			</div>
@@ -99,7 +99,7 @@ echo '<meta property="' . $k . '" content="' . $v . '" />' . "\n";
 		<!-- #z_layout_body -->
 
 		<div id="z_layout_footer">
-			<!-- **** フッター ***** -->
+			<!-- **** ãƒ•ãƒƒã‚¿ãƒ¼ ***** -->
 		<?php echo $this->render('_partial/footer.phtml'); ?>
 		</div>
 		<!-- #z_layout_footer -->
