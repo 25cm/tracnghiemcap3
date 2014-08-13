@@ -1,98 +1,16 @@
-<script type="text/javascript">
-<!--
-// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã�«titleä»˜ã�‘
-//-->
-
-window.onerror = function(){return true;}
-$(document).ready(function() {
-	
-    var fqdn = $('#fqdn').val();
-    var url = window.location.href.substr(window.location.href.indexOf("/")+1);
-    
-      var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
-     $("#gnavi .dropdown li a").each(function(){
-    	 if(url=="/"+fqdn+'/inquiry/inquiry'){
-             $('li.gnavi04').addClass('gnavi04' + ' ' +'gnavi04_on');
-        }else if(url=="/"+fqdn+'/eu-issue/request'){
-        	$('li.gnavi02').addClass('gnavi02' + ' ' +'gnavi02_on');
-        }else if(url=="/"+fqdn+'/du-issue/request'){
-            $('li.gnavi02').addClass('gnavi02' + ' ' +'gnavi02_on');
-        }else if(url=="/"+fqdn+'/top/list'){
-            $('li.gnavi01').addClass('gnavi01' + ' ' +'gnavi01_on');
-        }else if(url=="/"+fqdn+'/eu-issued-hist/list'){
-            $('li.gnavi03').addClass('gnavi03' + ' ' +'gnavi03_on');
-        }else if(url=="/"+fqdn+'/du-issued-hist/list'){
-            $('li.gnavi03').addClass('gnavi03' + ' ' +'gnavi03_on');
-        }
-     });
-})
-</script>
-
-
-<?php
-// if(Auth_Info::isLoggedUser())
-// $this->role = Auth_Info::getUser()->user_type;
-?>
-
-<div id="gnavi">
-	<ul class="dropdown">
-		<li class="gnavi01"><a id="toplistmenu" href="/top/list"></a></li>
-		<?php //if(strcmp($this->role,MUsers::DISCO_USER) === 0 ):?>
-		      <li class="gnavi02"><a id="duissuemenu" href="/du-issue/request" class="issuerequest">ç™ºè¡Œä¾�é ¼</a></li>
-		      <li class="gnavi03"><a id="duissuehistmenu" href="/du-issued-hist/list">ç™ºè¡Œå±¥æ­´ä¸€è¦§</a></li>
-		<?php //elseif (strcmp($this->role,MUsers::END_USER) === 0 ):?>
-<!-- 		      <li class="gnavi02"><a id="euissuemenu" href="/eu-issue/request" class="issuerequest">ç™ºè¡Œä¾�é ¼</a></li> -->
-<!-- 		      <li class="gnavi03"><a id="euissuehistmenu" href="/eu-issued-hist/list">ç™ºè¡Œå±¥æ­´ä¸€è¦§</a></li> -->
-		<?php //endif;?>
-        <li class="gnavi04"><a id="inquirymenu" href="/inquiry/inquiry">ã�Šå•�ã�„å�ˆã‚�ã�›</a>
+<nav class="horizontal-menu">
+    <ul>
+        <li>
+        	<a class="dropdown-toggle" href="#">Products</a>
+        	<ul class="dropdown-menu dark" data-show="hover">
+        		<li><a href="#">Windows 8.1</a></li>
+        		<li><a href="#">Skype 20.0</a></li>
+        		<li><a href="#">Internet Explorer 14</a></li>
+        		<li><a href="#">Microsoft Office 14</a></li>
+        	</ul>
         </li>
-	</ul>
-</div>
-<?php //echo $this->formHidden('fqdn', Zynas_Registry::getConfig()->system->fqdn);?>
-
-<script type="text/javascript">
-wnds = new Array();
-wnds2 = new Array();
-$('#toplistmenu').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-
-$('#duissuemenu').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-
-$('#duissuehistmenu').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-
-$('#euissuemenu').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-
-$('#euissuehistmenu').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-
-$('#inquirymenu').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-
-</script>
+        <li><a href="#">Download</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Buy Now</a></li>
+    </ul>
+</nav>

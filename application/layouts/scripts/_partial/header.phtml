@@ -1,17 +1,31 @@
-<div id="header">
-	<h1>
-		<a href="http://www.disco.co.jp"><img src="/resources/image/logo.jpg"
-			alt="DISCO" width="205" height="48" border="0"> </a>
-	</h1>
-	<p>
-		<a id="logout" href="/auth/logout">Tho�t</a>
-	</p>
-</div>
-<script type="text/javascript">
-$('#logout').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-</script>
+<nav class="navigation-bar dark">
+	<nav class="navigation-bar-content">
+		<div class="no-tablet-portrait">
+			<div class="element">
+				<a href="#"><span class="icon-home"></span></a>
+			</div>
+			<span class="element-divider"></span>			
+			<div class="element">
+				<div class="input-control text">
+				    <input type="text" />
+				    <button class="btn-search"></button>
+				</div>
+			</div>
+        	<div class="element place-right">
+            	<a class="dropdown-toggle" href="#">
+            		<span class="icon-cog"></span>
+            	</a>
+                <ul class="dropdown-menu place-right" data-role="dropdown" data-effect='fade'>
+                	<li><a href="#">Thông tin cá nhân</a></li>
+                    <li><a href="#">Đổi mật khẩu</a></li>
+                    <li><a href="#">Đăng xuất</a></li>
+                </ul>
+			</div>
+            <span class="element-divider place-right"></span>
+            <button class="element image-button image-left place-right">
+            	Anh Nguyễn
+            	<img src="/resources/metro/images/me.jpg"/>
+            </button>
+		</div>		
+	</nav>
+</nav>
