@@ -27,6 +27,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
 
     protected function _initView() {
+    	
         $view = new Zend_View();
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('ViewRenderer');
         $viewRenderer->setView($view);
@@ -56,6 +57,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 //     }
 
     protected function _initDatabase() {
+    	
         $config = $this->getOptions();
         $db = Zend_Db::factory($config['resources']['db']['adapter'], $config['resources']['db']['params'], $config['resources']['db']['params']['profiler']);
 //         Zynas_Db_Table::setDefaultAdapter($db);

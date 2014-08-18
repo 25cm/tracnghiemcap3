@@ -7,6 +7,7 @@ class IndexController extends Zend_Controller_Action {
 //     }
 
     public function indexAction() {
+    	echo __METHOD__;
 //         $user = new Users();
 //         $result = $user->test();
         
@@ -14,7 +15,7 @@ class IndexController extends Zend_Controller_Action {
 //         print_r($result);
 //         echo "</pre>";
     }
-
+    
     /**
      *
      *
