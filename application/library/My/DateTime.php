@@ -1,5 +1,5 @@
 <?php
-class VA_DateTime
+class My_DateTime
 {
     public function test()
     {

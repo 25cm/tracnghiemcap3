@@ -60,6 +60,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     	
         $config = $this->getOptions();
         $db = Zend_Db::factory($config['resources']['db']['adapter'], $config['resources']['db']['params'], $config['resources']['db']['params']['profiler']);
+//         $db->setFetchMode(Zend_Db::FETCH_ASSOC);
+//         $db->query("SET NAMES 'utf-8'");
+//         $db->query("SET CHARACTER SET 'utf-8'");
+        Zend_Registry::set('connectDb', $db);
+        Zend_Db_Table::setDefaultAdapter($db);
 //         Zynas_Db_Table::setDefaultAdapter($db);
 //         Zynas_Db_Table::setPrefix($config['resources']['db']['table']['prefix']);
     }

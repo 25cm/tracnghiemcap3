@@ -2,32 +2,33 @@
 <form action="" method="post">
 	<fieldset>
 		<legend>Đăng nhập</legend>
-		<label>Email</label>
+		<label>Tên đăng nhập</label>
 		<div class="input-control text size3" data-role="input-control">
-			<?php echo $this->formText('email', '', array('placeholder' => 'Your email address'));?>
-			<?php //echo $this->formErrors('email');?>
-			<button class="btn-clear" tabindex="-1"></button>
+			<?php echo $this->formText('username', '', array('placeholder' => 'User name'));?>
+			<?php //echo $this->formErrors('username');?>
+<!-- 			<button class="btn-clear" tabindex="-1"></button> -->
 		</div>
 		<label>Mật khẩu</label>
 		<div class="input-control password size3" data-role="input-control">
 			<?php echo $this->formPassword('password', $this->password, array('placeholder' => 'Your password'))?>
 			<?php //echo $this->formErrors('password');?>
-			<button class="btn-reveal" tabindex="-1"></button>
+<!-- 			<button class="btn-reveal" tabindex="-1"></button> -->
 		</div>
 		<div class="input-control textbox" data-role="input-control">
 			<label>
 				<?php echo $this->formCheckbox('remember', $this->remember, array('checked' => true));?>
 				<span class="check"></span>
-				Remember me
+				Ghi nhớ?
 			</label>
 		</div>
 		<br>
-		Nhap captcha:<br>
-		<input type="text" name="captcha">
-		<input type="hidden" name="captcha_id" value="<?php echo $this->captchaId;?>">
 		<div style="line-height: 200%">
 			<input type="submit" value="Đăng nhập">
 		</div>
 	</fieldset>
 </form>
-<?php echo $this->captcha;?>
+
+<!-- 		Nhap captcha:<br> -->
+<!-- 		<input type="text" name="captcha"> -->
+		<!-- <input type="hidden" name="captcha_id" value="<?php //echo $this->captchaId;?>"> -->
+<?php //echo $this->captcha;?>
