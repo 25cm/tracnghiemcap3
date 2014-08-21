@@ -1,12 +1,6 @@
 <?php
-/**
- * <pre>
- * </pre>
- * @author ThinhNh
- * @package /modules/default/controller
- */
 
-class TopController extends Controller {
+class TopController extends My_Controller {
 
 
     /**
@@ -16,7 +10,6 @@ class TopController extends Controller {
      * </pre>
      */
     public function indexAction() {        
-        $this->session->removeData(self::SESSION_KEY_RETURN_DETAIL);        
         $this->_forward('/list');
     }
 

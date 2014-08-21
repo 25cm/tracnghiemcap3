@@ -1,75 +1,61 @@
 <?php
+
 /**
- * ログイン画面のコントローラークラス
- * <pre>
- * </pre>
- * @author nojiri
- * @package /modules/default/controller
+ * 
+ * @author AnhNV
+ *
  */
 
-class AuthController extends My_Controller {
-
-//     const COOKIE_KEY_USER_ID = 'user_id';
-//     const COOKIE_KEY_USER_PSW = 'user_psw';
-//     const SESSION_KEY_USER_ID = 'id';
-//     const SESSION_KEY_PSW = 'psw';
-
+class AuthController extends My_Controller_Action {
+	
+	/**
+	 * 
+	 */	
 	public function indexAction() {
-		$db = Zend_Registry::get('dbConnect');
-		$auth = Zend_Auth::getInstance();
-		$authAdapter = new Zend_Auth_Adapter_DbTable($db);
-		$authAdapter->setTableName('users')
-					->setIdentityColumn('user_name')
-					->setCredentialColumn('password');
-		
-		// Neu can them dieu kien
-// 		$select = $authAdapter->getDbSelect();
-// 		$select->where('')
-// 			   ->where('');
-		
-		if ($this->_request->isPost()) {
-			$user_name = $this->_request->getParam('user_name');
-			$password = $this->_request->getParam('password');
-			$authAdapter->setIdentity($user_name);
-			$authAdapter->setCredential($password);
-			
-			// Authenticate
-			$result = $auth->authenticate($authAdapter);
-			if ($result->isValid()) {
-				// Login success
-				$userInfo = $authAdapter->getResultRowObject();
-				// Set session
-				$auth->getStorage()->write($data);
-				// Lay thong tin
-				$auth->getIdentity();
-			} else {
-				// Login fail: User name and password do not match
-			}
-		}
-		
-		//$this->_redirect('auth/login');
+		$this->_helper->viewRenderer->setNoRender();
+		return $this->_forward('/login');
 	}
 	
     /**
-     * 初期化処理
-     * <pre>
-     * </pre>
+     * 
      */
     public function loginAction() {
-    	
-    	// Kiem tra login hay chua
     	$auth = Zend_Auth::getInstance();
     	if ($auth->hasIdentity()) {
-    		// da login
+    		return $this->_redirect('index/index');
     	} else {
-    		// chua login
+    		
     	}
+    }
+    
+    public function confirmLoginAction() {
+    	if ($this->_request->isPost()) {
+    		// Get username and password
+    		$username = $this->_request->getParam('username');
+    		$password = $this->_request->getParam('password');
+    		
+    		// Authenticate
+    		$result = My_Auth_Info::authenticate($username, $password);
+    		if ($result) {
+    			$this->_redirect('index/index');
+    		} else {
+    			// Login failed!
+    			$this->_forward('login');
+    		}
+    	}
+    	
+    	$this->_helper->viewRenderer->setNoRender();
     }
     	
     public function logOutAction() {
     	Zend_Auth::getInstance()->clearIdentity();
     	$this->_redirect('auth/login');
-    }	
+    }
+    
+    public function handleErrorDoLogin() {
+    	
+    }
+    
     	
     	
     	

@@ -1,5 +1,5 @@
 <!-- <form action="auth/confirm-login" method="post"> -->
-<form action="" method="post">
+<form action="/auth/confirm-login" method="post">
 	<fieldset>
 		<legend>Đăng nhập</legend>
 		<label>Tên đăng nhập</label>
@@ -16,7 +16,7 @@
 		</div>
 		<div class="input-control textbox" data-role="input-control">
 			<label>
-				<?php echo $this->formCheckbox('remember', $this->remember, array('checked' => true));?>
+				<?php echo $this->formCheckbox('remember', $this->remember, array('checked' => false));?>
 				<span class="check"></span>
 				Ghi nhớ?
 			</label>
