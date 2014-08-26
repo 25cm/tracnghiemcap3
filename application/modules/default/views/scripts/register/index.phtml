@@ -10,26 +10,34 @@
     	<?php echo $this->formText('password', '', array('placeholder' => 'type password')); ?>
 	</div>
     <div class="input-control text size4" data-role="input-control">
-    	<?php echo $this->formText('retype-password', '', array('placeholder' => 're-type password')); ?>
+    	<?php echo $this->formText('retype_password', '', array('placeholder' => 're-type password')); ?>
 	</div>
     <label>Lớp&nbsp;<span class="required">*</span></label>
     <div class="input-control select size4">
     	<?php //echo $this->formSe?>
-		<select>
-			<option>Lớp 10</option>
-			<option>Lớp 11</option>
-			<option>Lớp 12</option>
+		<select name="class_id">
+			<option value="10">Lớp 10</option>
+			<option value="11">Lớp 11</option>
+			<option value="12">Lớp 12</option>
 		</select>
 	</div>
 	<label>Email</label>
 	<div class="input-control text size4">
 		<?php echo $this->formText('email', '', array('placeholder' => 'type email'));?>
+		<?php //echo $this->formErrors('email'); ?>
 	</div>
 	<label>Số điện thoại</label>
 	<div class="input-control text size4">
-		<?php echo $this->formText('phone-number', '', array('placeholder' => 'type phone number'));?>
+		<?php echo $this->formText('phone', '', array('placeholder' => 'type phone number'));?>
 	</div>
 
+	<div class="clearfix"></div>
+<!-- 	<label>Mã bảo vệ</label> -->
+	<div>
+		<?php //echo $this->captcha; ?>
+		<?php //echo $this->formHidden('captcha_id');?>
+	</div>
+	
     <div class="clearfix"></div>
 
     <input type="submit" value="Đăng ký">
