@@ -15,20 +15,21 @@ class My_Controller extends Zend_Controller_Action {
 				$errors[$k] = is_array($v) ? current($v) : $v;
 			}
 			$this->view->errors = $errors;
-// 			$customErrorHandler = 'handleError' . ucfirst(Zynas_Inflector::camelize($this->getRequest()->getActionName(), false, '-'));
-// 			if (method_exists($this, $customErrorHandler)) {
-// 				$this->$customErrorHandler();
-// 			}
-// 			else {
-// 				$actionStrs = explode('-', $this->getRequest()->getActionName());
-// 				if (count($actionStrs) > 1 && $actionStrs[0] == 'confirm') {
-// 					$action = substr($this->getRequest()->getActionName(), (strlen($actionStrs[0]) + 1));
-// 					return $this->_forward($action);
-// 				}
-// 				else {
-// 					$e->setErrors($this->view->errors);
-// 				}
-// 			}
+			$customErrorHandler = 'handleError' . ucfirst(My_Inflector::camelize($this->getRequest()->getActionName(), false, '-'));
+			if (method_exists($this, $customErrorHandler)) {
+				$this->$customErrorHandler();
+			}
+			else {
+				$actionStrs = explode('-', $this->getRequest()->getActionName());
+				if (count($actionStrs) > 1 && $actionStrs[0] == 'confirm') {
+					$action = substr($this->getRequest()->getActionName(), (strlen($actionStrs[0]) + 1));
+					return $this->_forward($action);
+				}
+				else {
+					$e = new My_Exception();
+					$e->setErrors($this->view->errors);
+				}
+			}
 		}
 	}
 	
@@ -48,8 +49,8 @@ class My_Controller extends Zend_Controller_Action {
 	
 	private function getValidator(){
 		$validationConfigPath = MODULE_PATH . '/' . $this->getRequest()->getModuleName() . '/configs/validate/' . $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName() . '.php';
-		echo $validationConfigPath;
-		$validationRules = file_exists($validationConfigPath) ? Zend_Config::loadFile($validationConfigPath) : new Zend_Config(array());
+// 		echo $validationConfigPath;
+		$validationRules = file_exists($validationConfigPath) ? My_Config::loadFile($validationConfigPath) : new My_Config(array());
 		return $validationRules ? $validationRules->toArray() : array();
 	}
 }

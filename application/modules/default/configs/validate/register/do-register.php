@@ -1,8 +1,10 @@
 <?php
 
 return array(
-	'email' => array(
-		array('StringLength', array('max'=>'10','encoding'=>'UTF-8'))
-)
-		
+    'email' => array(
+My_Filter_Input::ALLOW_EMPTY => False,
+array('StringLength', array('max' => 10)),
+array('EmailAddress'),
+),
+			
 );

@@ -1,6 +1,6 @@
 <?php
 
-class EngLishController extends My_Controller_Action {
+class EngLishController extends My_Controller {
 	
 	public function indexAction() {
 		

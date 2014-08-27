@@ -1,6 +1,6 @@
 <?php
 
-class IndexController extends Zend_Controller_Action {
+class IndexController extends My_Controller {
 
     public function indexAction() {
     	$this->_redirect('/home');

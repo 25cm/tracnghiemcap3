@@ -34,9 +34,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         return $view;
     }
 
-//     protected function _initPlugin() {
-//         Zend_Controller_Front::getInstance()->registerPlugin(new Controller_Plugin_Application());
-//     }
+    protected function _initPlugin() {
+        Zend_Controller_Front::getInstance()->registerPlugin(new Controller_Plugin_Application());
+    }
 
 //     protected function _initPath() {
 //         $configPath = APPLICATION_PATH . '/configs/path.ini';
@@ -62,7 +62,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 //         $db->setFetchMode(Zend_Db::FETCH_ASSOC);
 //         $db->query("SET NAMES 'utf-8'");
 //         $db->query("SET CHARACTER SET 'utf-8'");
-        Zend_Registry::set('dbConnect', $db);
+        My_Registry::set('dbConnect', $db);
         Zend_Db_Table::setDefaultAdapter($db);
     }
 
@@ -81,7 +81,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 //     }
 
     protected function _initConfig() {
-//         Zynas_Registry::setConfig(new Zend_Config($this->getApplication()->getOptions(), true));
+        My_Registry::setConfig(new My_Config($this->getApplication()->getOptions(), true));
     }
 
 //     protected function _initMail() {
