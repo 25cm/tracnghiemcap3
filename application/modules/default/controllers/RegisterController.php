@@ -5,7 +5,7 @@
  * @author AnhNV
  *
  */
-class RegisterController extends My_Controller {
+class RegisterController extends Controller {
 	
 	/**
 	 * indexAction

@@ -6,7 +6,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     protected function _initAutoload() {
         Zend_Loader_Autoloader::getInstance()->setFallbackAutoloader(true);
-//         require_once(FRAMEWORK_PATH . '/etc/func.php');
+        require_once(FRAMEWORK_PATH . '/etc/func.php');
 //         set_include_path(implode(PATH_SEPARATOR, array(
 //         APPLICATION_PATH . '/library/ParameterSheet',
 //         APPLICATION_PATH . '/library/log4php',

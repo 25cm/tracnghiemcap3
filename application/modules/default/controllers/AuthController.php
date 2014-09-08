@@ -6,7 +6,7 @@
  *
  */
 
-class AuthController extends My_Controller {
+class AuthController extends Controller {
 	
 	/**
 	 * 

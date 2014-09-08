@@ -1,17 +1,44 @@
-<div id="header">
-	<h1>
-		<a href="http://www.disco.co.jp"><img src="/resources/image/logo.jpg"
-			alt="DISCO" width="205" height="48" border="0"> </a>
-	</h1>
-	<p>
-		<a id="logout" href="/auth/logout">Log out</a>
-	</p>
+<div class="bg-blue">
+	<div class="container" style="padding: 10px 0;">
+		<div class="grid no-margin">
+        	<div class="row no-margin">
+	            <div class="span6 padding10">
+					<h3 class="fg-white">Trắc nghiệm cấp 3</h3>
+	                <p class="fg-white">Nơi con đường vào đại học rất là xa =))</p>
+	            </div>           
+			</div>            
+		</div>                
+	</div>
 </div>
-<script type="text/javascript">
-$('#logout').click(function(){
-    for(i = 0; i < wnds.length; ++i)
-        wnds[i].close();
-    for(i = 0; i < wnds2.length; ++i)
-        wnds2[i].close();
-});
-</script>
+<nav class="navigation-bar light">
+	<nav class="navigation-bar-content">
+		
+		<div class="no-tablet-portrait">
+			<div class="element">
+				<a href="/index"><span class="icon-home"></span></a>
+			</div>
+			<span class="element-divider"></span>			
+			<div class="element">
+				<div class="input-control text">
+				    <input type="text" />
+				    <button class="btn-search"></button>
+				</div>
+			</div>
+        	<div class="element place-right">
+            	<a class="dropdown-toggle" href="#">
+            		<span class="icon-cog"></span>
+            	</a>
+                <ul class="dropdown-menu place-right" data-role="dropdown" data-effect='fade'>
+                	<li><a href="#">Thông tin cá nhân</a></li>
+                    <li><a href="#">Đổi mật khẩu</a></li>
+                    <li><a href="#">Đăng xuất</a></li>
+                </ul>
+			</div>
+            <span class="element-divider place-right"></span>
+            <button class="element image-button image-left place-right">
+            	Anh Nguyễn
+            	<img src="/resources/metro/images/me.jpg"/>
+            </button>
+		</div>		
+	</nav>
+</nav>

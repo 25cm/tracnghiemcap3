@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends My_Controller {
+class HomeController extends Controller {
 	
 	public function indexAction() {
 		
