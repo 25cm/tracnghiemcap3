@@ -33,13 +33,18 @@ class RegisterController extends Controller {
 //     		$file = CAPTCHA_PATH . '/img/' . $captchaId . $captcha->getSuffix();
 //     		unlink($file);
 //     	}
+		$this->_forward('/register');
+	}
+	
+	public function registerAction() {
+		
 	}
 	
 	/**
 	 * doRegisterAction
 	 * @throws Exception
 	 */
-	public function doRegisterAction() {		
+	public function confirmRegisterAction() {		
 		if ($this->_request->isPost()) {
 // 			$params = $this->_request->getParams();
 // 			$user = $this->CreateUser($params);
@@ -50,9 +55,12 @@ class RegisterController extends Controller {
 // 				throw $e;
 // 			}
 		}
-		
 		$this->_helper->viewRenderer->setNoRender();
 	}
+	
+// 	public function handleErrorDoRegister() {
+// 		$this->_redirect('/register');
+// 	}
 	
 	/**
 	 * CreateUser

@@ -3,3 +3,8 @@
 .required {
 	color: red;
 }
+
+.alert {
+	color: red;
+	font-size: x-small;
+}

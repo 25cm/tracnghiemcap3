@@ -9,7 +9,7 @@ class Controller extends My_Controller_Action {
     protected $logger;
 
     public function init() {
-//         parent::init();
+        parent::init();
 //         $this->session = new My_SessionManager($this->getRequest()->getModuleName(), $this->getRequest()->getControllerName());
 //         if (strcmp($this->getRequest()->getControllerName(), 'error') !== 0) {
 //             $this->session->clear();
@@ -27,8 +27,10 @@ class Controller extends My_Controller_Action {
             foreach ($this->_input->getMessages() as $k => $v) {
                 $errors[$k] = is_array($v) ? current($v) : $v;
             }
+            
             $this->view->errors = $errors;
             $customErrorHandler = 'handleError' . ucfirst(My_Inflector::camelize($this->getRequest()->getActionName(), false, '-'));
+                        
             if (method_exists($this, $customErrorHandler)) {
                 $this->$customErrorHandler();
             }

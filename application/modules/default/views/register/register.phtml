@@ -1,16 +1,19 @@
-<form action="/register/do-register" method="post">
+<form action="/register/confirm-register" method="post">
 <fieldset>
 	<legend>Đăng ký tài khoản</legend>
     <label>Tên đăng nhập&nbsp;<span class="required">*</span></label>
     <div class="input-control text size4" data-role="input-control">
-    	<?php echo $this->formText('username', '', array('placeholder' => 'type text')); ?>
+    	<?php echo $this->formText('username', $this->request->username, array('placeholder' => 'type text')); ?>
+    	<?php echo $this->formError('username');?>
     </div>
     <label>Mật khẩu&nbsp;<span class="required">*</span></label>
     <div class="input-control password size4" data-role="input-control">
-    	<?php echo $this->formText('password', '', array('placeholder' => 'type password')); ?>
+    	<?php echo $this->formPassword('password', $this->request->password, array('placeholder' => 'type password')); ?>
+    	<?php echo $this->formError('password');?>
 	</div>
-    <div class="input-control text size4" data-role="input-control">
-    	<?php echo $this->formText('retype_password', '', array('placeholder' => 're-type password')); ?>
+    <div class="input-control password size4" data-role="input-control">
+    	<?php echo $this->formPassword('retype_password', $this->request->retype_password, array('placeholder' => 're-type password')); ?>
+    	<?php echo $this->formError('retype_password');?>
 	</div>
     <label>Lớp&nbsp;<span class="required">*</span></label>
     <div class="input-control select size4">
@@ -23,7 +26,7 @@
 	</div>
 	<label>Email</label>
 	<div class="input-control text size4">
-		<?php echo $this->formText('email', '', array('placeholder' => 'type email'));?>
+		<?php echo $this->formText('email', $this->request->email, array('placeholder' => 'type email'));?>
 		<?php echo $this->formError('email'); ?>
 	</div>
 	<label>Số điện thoại</label>
