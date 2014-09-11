@@ -31,7 +31,8 @@
 	</div>
 	<label>Số điện thoại</label>
 	<div class="input-control text size4">
-		<?php echo $this->formText('phone', '', array('placeholder' => 'type phone number'));?>
+		<?php echo $this->formText('phone', $this->request->phone, array('placeholder' => '(+84)97 222 333'));?>
+		<?php echo $this->formError('phone');?>
 	</div>
 
 	<div class="clearfix"></div>

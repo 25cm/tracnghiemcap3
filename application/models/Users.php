@@ -1,17 +1,17 @@
 <?php
-class Users extends My_Db_Table {
+
+/**
+ * 
+ * @author AnhNV
+ *
+ */
+class Users extends Zend_Db_Table {
 	
     protected $_name = 'users';
     protected $_key = 'user_id';
     // Bang co nhieu key
     //protected $_key = array('id1', 'id2');
-    
-    public function test() {
-        $select = $this->select()
-        ->from('users');
-        return $this->fetchAll($select);
-    }
-
+        
     /**
      * 
      * @param array $user
@@ -33,6 +33,17 @@ class Users extends My_Db_Table {
     	
 		// save
     	$row->save();
+    }
+    
+    /**
+     * 
+     * @param string $username
+     * @return boolean
+     */
+    public function checkExistUser($username) {
+    	
+    	$sql = $this->select()->where('user_name = ?', $username);
+    	return count($this->fetchAll($sql)) > 0 ? true : false;
     }
 }
 ?>

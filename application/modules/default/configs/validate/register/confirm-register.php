@@ -14,8 +14,11 @@ return array(
 			array('StringLength', array('max' => 12, 'min' => 6)),
 	),
     'email' => array(
-		My_Filter_Input::ALLOW_EMPTY => false,
+		My_Filter_Input::ALLOW_EMPTY => true,
     	array('EmailAddress'),
 	),
-			
+	'phone' => array(
+    	My_Filter_Input::ALLOW_EMPTY => true,
+		//array('PhoneNumber'),
+    )	
 );

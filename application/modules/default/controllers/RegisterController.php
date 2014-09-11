@@ -41,21 +41,36 @@ class RegisterController extends Controller {
 	}
 	
 	/**
-	 * doRegisterAction
+	 * confirmRegisterAction
 	 * @throws Exception
 	 */
-	public function confirmRegisterAction() {		
+	public function confirmRegisterAction() {
+				
 		if ($this->_request->isPost()) {
-// 			$params = $this->_request->getParams();
-// 			$user = $this->CreateUser($params);
-// 			try {
-// 				$userObj = new Users();
-// 				$userObj->add($user);
-// 			} catch (Exception $e) {
-// 				throw $e;
-// 			}
+			$params = $this->_request->getParams();
+			$user = $this->CreateUser($params);
+			
+			try {
+				$userObj = new Users();
+				
+				// User has already exist!
+				if ($userObj->checkExistUser($params['username'])) {
+					
+				} else {
+					$userObj->add($user);
+				}
+			} catch (Exception $e) {
+				throw $e;
+			}
 		}
+		// Move to complete
+		$this->_redirect('/register/complete');
+		
 		$this->_helper->viewRenderer->setNoRender();
+	}
+	
+	public function completeAction() {
+				
 	}
 	
 // 	public function handleErrorDoRegister() {
@@ -67,7 +82,8 @@ class RegisterController extends Controller {
 	 * @param array $params
 	 * @return Zend_Db_Table_Row
 	 */
-	private function CreateUser(array $params) {		
+	private function CreateUser(array $params) {
+		
 		$user = array();
 		$user['user_name'] = $params['username'];
 		$user['email'] = $params['email'];
