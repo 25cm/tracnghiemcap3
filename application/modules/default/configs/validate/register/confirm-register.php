@@ -19,6 +19,6 @@ return array(
 	),
 	'phone' => array(
     	My_Filter_Input::ALLOW_EMPTY => true,
-		//array('PhoneNumber'),
+		array('PhoneNumber'),
     )	
 );
