@@ -84,11 +84,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         My_Registry::setConfig(new My_Config($this->getApplication()->getOptions(), true));
     }
 
-//     protected function _initMail() {
-//         $configPath = APPLICATION_PATH . '/configs/mail.ini';
-//         $config = new Zend_Config_Ini($configPath, APPLICATION_ENV, array('allowModifications' => true));
-//         Zynas_Registry::setConfig(new Zend_Config($this->fArray_merge(Zynas_Registry::getConfig()->toArray(), $config->toArray())));
-//     }
+    protected function _initMail() {
+        $configPath = APPLICATION_PATH . '/configs/mail.ini';
+        $config = new Zend_Config_Ini($configPath, APPLICATION_ENV, array('allowModifications' => true));
+        My_Registry::setConfig(new Zend_Config($this->fArray_merge(My_Registry::getConfig()->toArray(), $config->toArray())));
+    }
 
 //     protected function _initCli() {
 //         if (defined('IS_CLI') && IS_CLI) {
@@ -105,25 +105,25 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 //         require_once ( APPLICATION_PATH.'/library/Logger.php');
 //     }
 
-//     function fArray_merge ($aOld, $aNew) {
-//         if(is_array($aOld)) {
-//             if(is_array($aNew)) {
-//                 foreach($aNew as $sKey => $mValue) {
-//                     if(isset($aOld[$sKey]) && is_array($mValue) && is_array($aOld[$sKey])) {
-//                         $aOld[$sKey] = $this->fArray_merge($aOld[$sKey], $mValue);
-//                     }
-//                     else{
-//                         $aOld[$sKey] = $mValue;
-//                     }
-//                 }
-//             }
-//         }
-//         elseif(!is_array($aOld) && (strlen($aOld) == 0 || $aOld == 0)) {
-//             $aOld = $aNew;
-//         }
+    function fArray_merge ($aOld, $aNew) {
+        if(is_array($aOld)) {
+            if(is_array($aNew)) {
+                foreach($aNew as $sKey => $mValue) {
+                    if(isset($aOld[$sKey]) && is_array($mValue) && is_array($aOld[$sKey])) {
+                        $aOld[$sKey] = $this->fArray_merge($aOld[$sKey], $mValue);
+                    }
+                    else{
+                        $aOld[$sKey] = $mValue;
+                    }
+                }
+            }
+        }
+        elseif(!is_array($aOld) && (strlen($aOld) == 0 || $aOld == 0)) {
+            $aOld = $aNew;
+        }
 
-//         return($aOld);
-//     }
+        return($aOld);
+    }
 
 }
 

@@ -21,6 +21,8 @@ class Users extends Zend_Db_Table {
     	$row = $this->fetchNew();
 		$row->user_name = $user['user_name'];
 		$row->email = $user['email'];
+		$row->verified = $user['verified'];
+		$row->verification_code = $user['verification_code'];
 		$row->phone_number = $user['phone_number'];
 		$row->class_id = $user['class_id'];
 		$row->password = $user['password'];
@@ -33,6 +35,17 @@ class Users extends Zend_Db_Table {
     	
 		// save
     	$row->save();
+    }
+    
+    /**
+     * 
+     * @param string $activationCd
+     * @return boolean
+     */
+    public function checkActivateUser($activationCd) {
+    	
+    	$sql = $this->select()->where("activation_code = ? and verified = '0'", $activationCd);
+    	return count($this->fetchAll($sql)) > 0 ? true : false;
     }
     
     /**
