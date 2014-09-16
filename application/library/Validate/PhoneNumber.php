@@ -1,13 +1,17 @@
 <?php
 
+/**
+ * 
+ * @author AnhNV
+ *
+ */
 class Validate_PhoneNumber extends Zend_Validate_Abstract {
 	
     const NOT_PHONENUMBER = 'phoneNumberNotPhoneNumber';
     const STRING_EMPTY = 'phoneNumberStringEmpty';
     
     protected $_messageTemplates = array(
-            self::NOT_PHONENUMBER => "Sai roi em oi",
-            self::STRING_EMPTY => '入力が必要です。'
+    	self::NOT_PHONENUMBER => "Không đúng định dạng số điện thoại",
     );
     
     public function isValid($value) {

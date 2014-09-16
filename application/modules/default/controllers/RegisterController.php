@@ -10,32 +10,13 @@ class RegisterController extends Controller {
 	/**
 	 * indexAction
 	 */
-	public function indexAction() {		
-//     	$captcha = new Zend_Captcha_Image();
-//     	$captcha->setImgDir(CAPTCHA_PATH . '/img');
-//     	$captcha->setImgUrl(CAPTCHA_URL . '/img');
-//     	$captcha->setWordlen(6);
-//     	$captcha->setFont(CAPTCHA_PATH . '/font/tahoma.ttf');
-//     	$captcha->setFontSize(30);
-//     	$captcha->generate();
-//     	$this->view->captcha = $captcha->render($this->view);
-//     	$this->view->captchaId = $captcha->getId();
- 
-//     	$captchaSession = new Zend_Session_Namespace('Zend_Form_Captcha_' . $captcha->getId());
-//     	$captchaSession->word = $captcha->getWord();
-
-//     	if ($this->_request->isPost()) {
-    		
-//     		$captchaId = $this->_request->getParam('captcha_id');
-//     		$captchaSession = new Zend_Session_Namespace('Zend_Form_Captcha_' . $captchaId);
-
-//     		echo $captchaSession->word;
-//     		$file = CAPTCHA_PATH . '/img/' . $captchaId . $captcha->getSuffix();
-//     		unlink($file);
-//     	}
+	public function indexAction() {
 		$this->_forward('/register');
 	}
 	
+	/**
+	 * 
+	 */
 	public function registerAction() {
 		
 	}
@@ -60,20 +41,19 @@ class RegisterController extends Controller {
 				
 				// User has already exist!
 				if ($userObj->checkExistUser($params['username'])) {
-					echo 'Tên đăng nhập đã tồn tại!';
+// 					$this->_forward('/error');
 				} else {
 					$userObj->add($user);
 					// Send an email for registration user
-					$this->sendActivationMail($params['email'], $verificationCd, $verificationLink);
-					echo __METHOD__;exit;
+					//$this->sendActivationMail($params['email'], $verificationCd, $verificationLink);
+					
+					// Move to complete
+					$this->_redirect('/register/complete');
 				}
 			} catch (Exception $e) {
 				throw $e;
 			}
 		}
-		
-		// Move to complete
-		$this->_redirect('/register/complete');
 		
 		$this->_helper->viewRenderer->setNoRender();
 	}
@@ -95,15 +75,18 @@ class RegisterController extends Controller {
 	}
 	
 	/**
-	 * 
+	 * Complete register
 	 */
 	public function completeAction() {
 				
 	}
 	
-// 	public function handleErrorDoRegister() {
-// 		$this->_redirect('/register');
-// 	}
+	/**
+	 * Error
+	 */
+	public function errorAction() {
+		
+	}
 	
 	/**
 	 * CreateUser

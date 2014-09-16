@@ -5,13 +5,13 @@
 		<label>Tên đăng nhập</label>
 		<div class="input-control text size3" data-role="input-control">
 			<?php echo $this->formText('username', '', array('placeholder' => 'User name'));?>
-			<?php //echo $this->formErrors('username');?>
+			<?php echo $this->formError('username');?>
 <!-- 			<button class="btn-clear" tabindex="-1"></button> -->
 		</div>
 		<label>Mật khẩu</label>
 		<div class="input-control password size3" data-role="input-control">
 			<?php echo $this->formPassword('password', $this->password, array('placeholder' => 'Your password'))?>
-			<?php //echo $this->formErrors('password');?>
+			<?php echo $this->formError('password');?>
 <!-- 			<button class="btn-reveal" tabindex="-1"></button> -->
 		</div>
 		<div class="input-control textbox" data-role="input-control">
@@ -27,8 +27,3 @@
 		</div>
 	</fieldset>
 </form>
-
-<!-- 		Nhap captcha:<br> -->
-<!-- 		<input type="text" name="captcha"> -->
-		<!-- <input type="hidden" name="captcha_id" value="<?php //echo $this->captchaId;?>"> -->
-<?php //echo $this->captcha;?>

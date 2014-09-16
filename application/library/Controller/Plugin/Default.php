@@ -9,27 +9,27 @@ class Controller_Plugin_Default extends Zend_Controller_Plugin_Abstract {
 // 			return $redirector->gotoUrl('http://' . My_Registry::getConfig()->system->fqdn . '/error');
 // 		}
 
-		if (!Auth_Info::isLoggedUser()) {
-			$loginRequired = true;
-			$adminLoginNotRequired = array(
-	                'default/auth/login',
-	                'default/auth/confirm-login',
-					'default/recover/request',	
-			        'default/recover/confirm-request',
-					'default/recover/confirm'
-			);
-			$requestResource = $this->getRequest()->getModuleName() . '/' . $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName();
-			foreach ($adminLoginNotRequired as $resource) {
-				if ($requestResource == $resource) {
-					$loginRequired = false;
-					break;
-				}
-			}
-// 			if ($loginRequired) {
-// 				$redirTo = '/auth/login';
-// 				$redirector->gotoUrl($redirTo);
+// 		if (!Auth_Info::isLoggedUser()) {
+// 			$loginRequired = true;
+// 			$adminLoginNotRequired = array(
+// 	                'default/auth/login',
+// 	                'default/auth/confirm-login',
+// 					'default/recover/request',	
+// 			        'default/recover/confirm-request',
+// 					'default/recover/confirm'
+// 			);
+// 			$requestResource = $this->getRequest()->getModuleName() . '/' . $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName();
+// 			foreach ($adminLoginNotRequired as $resource) {
+// 				if ($requestResource == $resource) {
+// 					$loginRequired = false;
+// 					break;
+// 				}
 // 			}
-		}
+// // 			if ($loginRequired) {
+// // 				$redirTo = '/auth/login';
+// // 				$redirector->gotoUrl($redirTo);
+// // 			}
+// 		}
 
 		$configPath = pjoin(MODULE_PATH, 'default/configs/controllers') . '/' . $this->getRequest()->getControllerName() . '.ini';
 		if(file_exists($configPath)) {

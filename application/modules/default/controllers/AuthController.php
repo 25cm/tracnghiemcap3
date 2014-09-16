@@ -20,9 +20,13 @@ class AuthController extends Controller {
      * 
      */
     public function loginAction() {
+    	
+    	// Session check
+    	$ns = new Zend_Session_Namespace('login');
+    	    	
     	$auth = Zend_Auth::getInstance();
-    	if ($auth->hasIdentity()) {
-    		return $this->_redirect('index/index');
+    	if ($auth->hasIdentity() || !empty($ns->username)) {
+    		return $this->_redirect('home/');
     	} else {
     		
     	}
@@ -32,111 +36,41 @@ class AuthController extends Controller {
     	if ($this->_request->isPost()) {
     		// Get username and password
     		$username = $this->_request->getParam('username');
-    		$password = $this->_request->getParam('password');
+    		$password = EnCode::getInstance()->getHashCode($this->_request->getParam('password'));
+    		$remember = $this->_request->getParam('remember');
     		
     		// Authenticate
-    		$result = My_Auth_Info::authenticate($username, $password);
+    		//$auth = Auth_User::getInstance();
+    		$result = Auth_User::getInstance()->authenticate($username, $password);
+    		
     		if ($result) {
-    			$this->_redirect('index/index');
+    			// Remember user
+    			if ($remember = '1') {
+    				$ns = new Zend_Session_Namespace('login');
+    				$ns->username = $username;
+    				$ns->password = $password;
+    				$ns->setExpirationSeconds(1*60*60); // Life for 1 hour
+    			}    			
+    			
+    			$this->_redirect('home/');
     		} else {
     			// Login failed!
-    			$this->_forward('login');
+    			$this->_forward('/login');
     		}
     	}
     	
     	$this->_helper->viewRenderer->setNoRender();
     }
     	
-    public function logOutAction() {
+    public function logoutAction() {
+    	// Remove session
+    	$ns = new Zend_Session_Namespace('login');
+    	unset($ns->username);
+    	unset($ns->password);
+    	
     	Zend_Auth::getInstance()->clearIdentity();
-    	$this->_redirect('auth/login');
+    	$this->_redirect('/auth/login');
+    	$this->_helper->viewRenderer->setNoRender();
     }
-    
-    public function handleErrorDoLogin() {
-    	
-    }
-    
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	// CAPTCHA
-    	
-//     	$captcha = new Zend_Captcha_Image();
-//     	$captcha->setImgDir(CAPTCHA_PATH . '/img');
-//     	$captcha->setImgUrl(CAPTCHA_URL . '/img');
-//     	$captcha->setWordlen(6);
-//     	$captcha->setFont(CAPTCHA_PATH . '/font/tahoma.ttf');
-//     	$captcha->setFontSize(30);
-//     	$captcha->generate();
-//     	$this->view->captcha = $captcha->render($this->view);
-//     	$this->view->captchaId = $captcha->getId(); 
-    	
-// //     	$captchaSession = new Zend_Session_Namespace('Zend_Form_Captcha_' . $captcha->getId());
-// //     	$captchaSession->word = $captcha->getWord();
-    	    	
-//     	if ($this->_request->isPost()) {
-//     		echo "<pre>";
-//     		print_r($this->_request->getParams());
-//     		echo "</pre>";
-//     		$captchaId = $this->_request->getParam('captcha_id');
-//     		$captchaSession = new Zend_Session_Namespace('Zend_Form_Captcha_' . $captchaId);
-    		
-//     		echo $captchaSession->word;
-//     		$file = CAPTCHA_PATH . '/img/' . $captchaId . $captcha->getSuffix();
-//     		unlink($file);
-//     	}
-    	
-//     	echo "<pre>";
-//     	print_r($captcha);
-//     	echo "</pre>";
-//     }
-
-    /**
-     * ログイン処理
-     * <pre>
-     * </pre>
-     */
-//     public function confirmLoginAction() {
-//         Log::infoLog('method='.__FUNCTION__.';user_id'.';Start action;',$this->getRequest()->getParams());
-// 		$auth = Auth_User::getInstance();
-//         $cookie = new Zynas_CookieManager();
-//         $mailAdress = $this->_input->mailAdress;
-//         $password = $this->_input->password;
-//         $remember = $this->_input->remember;
-//         if ($auth->authenticate($mailAdress, $password)) {
-//             if (strcmp($remember,MUsers::REMEMBER) === 0 ) {
-//                 $cookie->setData($mailAdress, self::COOKIE_KEY_USER_ID, '', 30, true);
-//             } else {
-//                 $cookie->removeData(self::COOKIE_KEY_USER_ID);
-//             }
-//             Log::infoLog('method='.__FUNCTION__.';user_id'.';End action;',$this->getRequest()->getParams());
-//             return $this->_redirect('/top/list');
-//         } else {
-//             return $this->handleErrorDoLogin();
-//         }
-//     }
-
-    /**
-     * ログアウト処理
-     * <pre>
-     *
-     * </pre>
-     */
-//     public function logoutAction(){
-//         Log::infoLog('method='.__FUNCTION__.';user_id'.';Start action;',$this->getRequest()->getParams());
-//         Auth_User::getInstance()->clear();
-//         Zynas_SessionManager::destory();
-//         $this->_redirect('/auth/login?out=' . (isset($_GET['out']) ? $_GET['out'] : '1'));
-//         Log::infoLog('method='.__FUNCTION__.';user_id'.';End action;',$this->getRequest()->getParams());
-//     }
-
-//     public function handleErrorDoLogin() {
-//         $this->view->errors = array('login' => E068V);
-//         return $this->_forward('login');
-//     }
 }
 ?>

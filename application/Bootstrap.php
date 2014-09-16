@@ -3,6 +3,17 @@
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     protected $_moduleName;
+    
+    protected function _initSession() {
+    	Zend_Session::start();
+    	//         if (!(defined('IS_CLI') && IS_CLI)) {
+    	//             $resources = $this->getApplication()->getOption('resources');
+    	//             Zend_Session::setOptions($resources['session']['options']);
+    	//             $sessDb = new Zend_Session_SaveHandler_DbTable($resources['session']['database']);
+    	//             Zend_Session::setSaveHandler($sessDb);
+    	//             Zend_Session::start();
+    	//         }
+    }    
 
     protected function _initAutoload() {
         Zend_Loader_Autoloader::getInstance()->setFallbackAutoloader(true);
@@ -66,15 +77,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         Zend_Db_Table::setDefaultAdapter($db);
     }
 
-    protected function _initSession() {
-//         if (!(defined('IS_CLI') && IS_CLI)) {
-//             $resources = $this->getApplication()->getOption('resources');
-//             Zend_Session::setOptions($resources['session']['options']);
-//             $sessDb = new Zend_Session_SaveHandler_DbTable($resources['session']['database']);
-//             Zend_Session::setSaveHandler($sessDb);
-//             Zend_Session::start();
-//         }
-    }
+//     protected function _initSession() {
+//     	Zend_Session::start();
+// //         if (!(defined('IS_CLI') && IS_CLI)) {
+// //             $resources = $this->getApplication()->getOption('resources');
+// //             Zend_Session::setOptions($resources['session']['options']);
+// //             $sessDb = new Zend_Session_SaveHandler_DbTable($resources['session']['database']);
+// //             Zend_Session::setSaveHandler($sessDb);
+// //             Zend_Session::start();
+// //         }
+//     }
 
 //     protected function _initTimezone() {
 //         date_default_timezone_set('Asia/Tokyo');

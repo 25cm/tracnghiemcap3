@@ -1,3 +1,5 @@
+<?php $auth = Zend_Auth::getInstance(); ?>
+
 <div class="bg-blue">
 	<div class="container" style="padding: 10px 0;">
 		<div class="grid no-margin">
@@ -25,18 +27,19 @@
 				</div>
 			</div>
         	<div class="element place-right">
-            	<a class="dropdown-toggle" href="#">
-            		<span class="icon-cog"></span>
-            	</a>
-                <ul class="dropdown-menu place-right" data-role="dropdown" data-effect='fade'>
-                	<li><a href="#">Thông tin cá nhân</a></li>
-                    <li><a href="#">Đổi mật khẩu</a></li>
-                    <li><a href="#">Đăng xuất</a></li>
-                </ul>
+        		<?php if ($auth->hasIdentity()):?>
+        			<a href="/auth/logout">Thoát</a>
+        		<?php else:?>
+        			<a href="/register">Đăng ký</a>
+        		<?php endif;?>
 			</div>
             <span class="element-divider place-right"></span>
             <button class="element image-button image-left place-right">
-            	Anh Nguyễn
+            	<?php if ($auth->hasIdentity()):?>
+            		<?php echo $auth->getIdentity()->user_name; ?>
+            	<?php else:?>
+            		<?php echo '<a href="/auth/login">Đăng nhập</a>';?>
+            	<?php endif;?>
             	<img src="/resources/metro/images/me.jpg"/>
             </button>
 		</div>		
