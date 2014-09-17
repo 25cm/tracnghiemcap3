@@ -9,10 +9,16 @@
     <label>Mật khẩu&nbsp;<span class="required">*</span></label>
     <div class="input-control password size4" data-role="input-control">
     	<?php echo $this->formPassword('password', $this->request->password, array('placeholder' => 'type password')); ?>
+    	<?php if ($this->formError('password') == null):?>
+    		<span style="visibility: hidden">&nbsp;</span>
+    	<?php endif;?>
     	<?php echo $this->formError('password');?>
 	</div>
     <div class="input-control password size4" data-role="input-control">
     	<?php echo $this->formPassword('retype_password', $this->request->retype_password, array('placeholder' => 're-type password')); ?>
+    	<?php if ($this->formError('retype_password') == null):?>
+    		<span style="visibility: hidden">&nbsp;</span>
+    	<?php endif;?>
     	<?php echo $this->formError('retype_password');?>
 	</div>
     <label>Lớp&nbsp;<span class="required">*</span></label>
@@ -31,7 +37,7 @@
 	</div>
 	<label>Số điện thoại</label>
 	<div class="input-control text size4">
-		<?php echo $this->formText('phone', $this->request->phone, array('placeholder' => '(+84)97 222 333'));?>
+		<?php echo $this->formText('phone', $this->request->phone, array('placeholder' => 'type your phone'));?>
 		<?php echo $this->formError('phone');?>
 	</div>
 
@@ -44,10 +50,16 @@
 	
     <div class="clearfix"></div>
 
-    <input type="submit" value="Đăng ký">
-    <input type="reset" value="Nhập lại">
+    <input type="submit" class="info" value="Đăng ký">
+    <input type="reset" class="info" value="Nhập lại">
 
     <div style="margin-top: 20px"></div>
 
 </fieldset>                    
-</form>                
+</form>
+
+<?php if (isset($this->error) && !empty($this->error)):?>
+<script type="text/javascript">
+	alert("Loi");
+</script>
+<?php endif;?>

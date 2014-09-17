@@ -38,18 +38,12 @@ class RegisterController extends Controller {
 			$user = $this->createUser($params, $verificationCd);
 			try {
 				$userObj = new Users();
-				
-				// User has already exist!
-				if ($userObj->checkExistUser($params['username'])) {
-// 					$this->_forward('/error');
-				} else {
-					$userObj->add($user);
-					// Send an email for registration user
-					//$this->sendActivationMail($params['email'], $verificationCd, $verificationLink);
+				$userObj->add($user);
+				// Send an email for registration user
+				//$this->sendActivationMail($params['email'], $verificationCd, $verificationLink);
 					
-					// Move to complete
-					$this->_redirect('/register/complete');
-				}
+				// Move to complete
+				$this->_redirect('/register/complete');
 			} catch (Exception $e) {
 				throw $e;
 			}
@@ -79,13 +73,6 @@ class RegisterController extends Controller {
 	 */
 	public function completeAction() {
 				
-	}
-	
-	/**
-	 * Error
-	 */
-	public function errorAction() {
-		
 	}
 	
 	/**

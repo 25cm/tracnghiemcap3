@@ -10,11 +10,6 @@ class Controller extends My_Controller_Action {
 
     public function init() {
         parent::init();
-//         $this->session = new My_SessionManager($this->getRequest()->getModuleName(), $this->getRequest()->getControllerName());
-//         if (strcmp($this->getRequest()->getControllerName(), 'error') !== 0) {
-//             $this->session->clear();
-//         }
-//         $this->logger = Logger::getLogger('default');
     }
 
     public function preDispatch() {
