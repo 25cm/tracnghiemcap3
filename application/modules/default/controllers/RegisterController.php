@@ -40,7 +40,7 @@ class RegisterController extends Controller {
 				$userObj = new Users();
 				$userObj->add($user);
 				// Send an email for registration user
-				//$this->sendActivationMail($params['email'], $verificationCd, $verificationLink);
+				$this->sendActivationMail($params['email'], $verificationLink);
 					
 				// Move to complete
 				$this->_redirect('/register/complete');
@@ -107,23 +107,24 @@ class RegisterController extends Controller {
 	 * @throws Zend_Mail_Transport_Exception
 	 */
 	private function sendActivationMail($email, $verificationLink) {
-		
 		try {
-			$config = array('auth' => 'login',
-				'username' => My_Registry::getConfig()->system->mail->complete_register->from,
-				'password' => My_Registry::getConfig()->system->mail->complete_register->password,
-				'ssl' => 'ssl',
-				'port' => '587'
+			$config = array(
+		        'auth' => My_Registry::getConfig()->system->mail->setting->auth,
+				'username' => My_Registry::getConfig()->system->mail->setting->username,
+				'password' => My_Registry::getConfig()->system->mail->setting->password,
+				'ssl' => My_Registry::getConfig()->system->mail->setting->ssl,
+				'port' => My_Registry::getConfig()->system->mail->setting->port
 			);
 			
-			$trans = new Zend_Mail_Transport_Smtp('mail.google.com', $config);
+			$trans = new Zend_Mail_Transport_Smtp(My_Registry::getConfig()->system->mail->setting->host, $config);
 			Zend_Mail::setDefaultTransport($trans);
 			
 			$mail = new Zend_Mail();
-			$mail->setFrom(My_Registry::getConfig()->system->mail->complete_register->from, My_Registry::getConfig()->system->mail->complete_register->from_name);
+			$mail->setFrom(My_Registry::getConfig()->system->mail->setting->username, My_Registry::getConfig()->system->mail->complete_register->from_name);
 			$mail->addTo($email);
 			$mail->setSubject(My_Registry::getConfig()->system->mail->complete_register->subject);
-			$mail->setBodyText("Bạn vui lòng click vào link dưới đây để kích hoạt tài khoản \n" . $verificationLink);
+			$mail->setBodyText("Bạn vui lòng click vào link dưới đây để kích hoạt tài khoản \n\n\n <a href='" . $verificationLink);
+// 			$mail->setBodyText(strtr(My_Registry::getConfig()->system->mail->complete_register->body, array('$verificationLink' => "\n\n" . $verificationLink)));
 			
 			$mail->send();
 		} catch (Zend_Mail_Transport_Exception $e) {
