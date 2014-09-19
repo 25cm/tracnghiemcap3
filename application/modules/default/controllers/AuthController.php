@@ -9,7 +9,7 @@
 class AuthController extends Controller {
 	
 	/**
-	 * 
+	 * indexAction
 	 */	
 	public function indexAction() {
 		$this->_helper->viewRenderer->setNoRender();
@@ -17,7 +17,7 @@ class AuthController extends Controller {
 	}
 	
     /**
-     * 
+     * loginAction
      */
     public function loginAction() {
     	
@@ -32,6 +32,9 @@ class AuthController extends Controller {
     	}
     }
     
+    /**
+     * confirmLoginAction
+     */
     public function confirmLoginAction() {
     	if ($this->_request->isPost()) {
     		// Get username and password
@@ -55,13 +58,23 @@ class AuthController extends Controller {
     			$this->_redirect('home/');
     		} else {
     			// Login failed!
-    			$this->_forward('/login');
+    			$this->_forward('/error');
     		}
     	}
     	
     	$this->_helper->viewRenderer->setNoRender();
     }
+    
+    /**
+     * errorAction
+     */
+    public function errorAction() {
     	
+    }
+
+    /**
+     * logoutAction
+     */
     public function logoutAction() {
     	// Remove session
     	$ns = new Zend_Session_Namespace('login');

@@ -8,3 +8,9 @@
 	color: red;
 	font-size: x-small;
 }
+
+.center-text {
+	align: center;
+	line-height: 200%;
+	margin-top: 20px;
+}

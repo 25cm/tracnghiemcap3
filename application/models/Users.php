@@ -44,7 +44,9 @@ class Users extends Zend_Db_Table {
      */
     public function checkActivateUser($activationCd) {
     	
-    	$sql = $this->select()->where("activation_code = ? and verified = '0'", $activationCd);
+    	$sql = $this->select()
+    			->where("verified = '0'")
+    			->where("verification_code = ?", $activationCd);
     	return count($this->fetchAll($sql)) > 0 ? true : false;
     }
     

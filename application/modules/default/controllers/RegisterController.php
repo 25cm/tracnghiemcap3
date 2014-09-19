@@ -28,22 +28,28 @@ class RegisterController extends Controller {
 	public function confirmRegisterAction() {
 				
 		if ($this->_request->isPost()) {
+			
 			// Request params
 			$params = $this->_request->getParams();
 			
 			// Creating a verification code
 			$verificationCd = md5(uniqid("randomstringtogetverificationcode", true));
 			$verificationLink = My_Registry::getConfig()->system->fqdn . "/register/activate?code=" . $verificationCd;
+			
 			// Create user for insert
 			$user = $this->createUser($params, $verificationCd);
+			
 			try {
+				
 				$userObj = new Users();
 				$userObj->add($user);
+				
 				// Send an email for registration user
-				$this->sendActivationMail($params['email'], $verificationLink);
-					
+				$this->sendActivationMail($params['email'], $verificationCd, $verificationLink);
+				
 				// Move to complete
 				$this->_redirect('/register/complete');
+				
 			} catch (Exception $e) {
 				throw $e;
 			}
@@ -51,23 +57,7 @@ class RegisterController extends Controller {
 		
 		$this->_helper->viewRenderer->setNoRender();
 	}
-	
-	/**
-	 * 
-	 */
-	public function activateAction() {
 		
-		$code = $_GET['code'];
-		$userObj = new Users();
-		
-		if ($userObj->checkActivateUser($code)) {
-			$user = array();
-			$user['verified'] = '1';
-			
-			$userObj->update($user, "verification_code = '{$code}'");
-		}
-	}
-	
 	/**
 	 * Complete register
 	 */
@@ -106,8 +96,24 @@ class RegisterController extends Controller {
 	 * @param unknown $verificationLink
 	 * @throws Zend_Mail_Transport_Exception
 	 */
-	private function sendActivationMail($email, $verificationLink) {
+	private function sendActivationMail($email, $verificationCd) {
 		try {
+			$html = '<html>';
+			$html .= '	<body>';
+			$html .= '		<div style="line-height: 200%">';
+			$html .= '			Bạn đã đăng ký 1 tài khoản tại <a href="' . My_Registry::getConfig()->system->fqdn . '">www.tracnghiemcap3.com</a>';
+			$html .= '			<br>';
+			$html .= '			Bạn vui lòng click vào';
+			$html .= '			<a href="' . My_Registry::getConfig()->system->fqdn . '/activate/activate?code=' . $verificationCd . '">đây</a>';
+			$html .= '			để kích hoạt tài khoản.<br>';
+			$html .= '			Chúc bạn một ngày vui vẻ!';
+			$html .= '			<div style="margin-left: 400px; margin-top: 30px; font-style: italic">';
+			$html .= '				BQT tracnghiemcap3.com';
+			$html .= '			</div>';
+			$html .= '		</div>';
+			$html .= '	</body>';
+			$html .= '</html>';
+			
 			$config = array(
 		        'auth' => My_Registry::getConfig()->system->mail->setting->auth,
 				'username' => My_Registry::getConfig()->system->mail->setting->username,
@@ -119,13 +125,12 @@ class RegisterController extends Controller {
 			$trans = new Zend_Mail_Transport_Smtp(My_Registry::getConfig()->system->mail->setting->host, $config);
 			Zend_Mail::setDefaultTransport($trans);
 			
-			$mail = new Zend_Mail();
+			$mail = new Zend_Mail("utf-8");
+			$mail->setType(Zend_Mime::MULTIPART_RELATED);
 			$mail->setFrom(My_Registry::getConfig()->system->mail->setting->username, My_Registry::getConfig()->system->mail->complete_register->from_name);
 			$mail->addTo($email);
 			$mail->setSubject(My_Registry::getConfig()->system->mail->complete_register->subject);
-			$mail->setBodyText("Bạn vui lòng click vào link dưới đây để kích hoạt tài khoản \n\n\n <a href='" . $verificationLink);
-// 			$mail->setBodyText(strtr(My_Registry::getConfig()->system->mail->complete_register->body, array('$verificationLink' => "\n\n" . $verificationLink)));
-			
+			$mail->setBodyHtml($html);
 			$mail->send();
 		} catch (Zend_Mail_Transport_Exception $e) {
 			throw $e;
