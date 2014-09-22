@@ -1,0 +1,24 @@
+<form action="/recover/confirm-request" method="post">
+<fieldset>
+	<legend>Lấy lại mật khẩu</legend>
+	<div align="center" class="center-text">
+		Hãy nhập chính xác tên đăng nhập và địa chỉ email mà bạn đã dùng để đăng ký tài khoản tại <a href="tracnghiemcap3.com">tracnghiemcap3.com</a>,
+		<br>chúng tôi sẽ gửi một mã bảo mật mới cho bạn.<br><br>		
+		<div style="margin-left: auto; margin-right:auto; width: 500px; text-align:right;">
+			Tên đăng nhập<span class="required">*</span>&nbsp;
+			<div class="input-control text size5" data-role="input-control">
+		    	<?php echo $this->formText('username', $this->request->username, array('placeholder' => 'john.smith')); ?>
+		    	<?php echo $this->formError('username');?>
+		    </div><br>
+		    Email&nbsp;<span class="required">*</span>&nbsp;
+		    <div class="input-control text size5" data-role="input-control">
+		    	<?php echo $this->formText('email', $this->request->email, array('placeholder' => 'john.smith@gmail.com')); ?>
+		    	<?php echo $this->formError('email');?>
+		    </div>
+	    </div>
+	    <div>
+	    	<input type="submit" class="info" value="Lấy lại mật khẩu">
+		</div>
+    </div>
+</fieldset>                    
+</form>

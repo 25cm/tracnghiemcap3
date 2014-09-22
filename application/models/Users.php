@@ -7,11 +7,34 @@
  */
 class Users extends Zend_Db_Table {
 	
+	/**
+	 * 
+	 * @var table name
+	 */
     protected $_name = 'users';
+    
+    /**
+     * 
+     * @var primary key, use array for multiple key
+     */
     protected $_key = 'user_id';
-    // Bang co nhieu key
-    //protected $_key = array('id1', 'id2');
-        
+    
+    /**
+     * @var Users
+     */
+    protected static $_instance = null;
+    
+    /**
+     * @return Users
+     */
+    public static function getInstance() {
+    	if (null === self::$_instance) {
+    		self::$_instance = new self();
+    	}
+    
+    	return self::$_instance;
+    }
+    
     /**
      * 
      * @param array $user
@@ -39,25 +62,31 @@ class Users extends Zend_Db_Table {
     
     /**
      * 
-     * @param string $activationCd
-     * @return boolean
+     * @param string $name
+     * @param string $email
+     * @param string $verified
      */
-    public function checkActivateUser($activationCd) {
+    public function getUserByCond($name = null, $email = null, $verified = null) {
     	
     	$sql = $this->select()
-    			->where("verified = '0'")
-    			->where("verification_code = ?", $activationCd);
-    	return count($this->fetchAll($sql)) > 0 ? true : false;
+    			->where("user_name = ?", $name)
+    			->where("email = ?", $email)
+    			->where("verified = ?", $verified);
+    	
+    	
+    	return $this->fetchRow($sql);
     }
     
     /**
      * 
-     * @param string $username
+     * @param string $activationCd
      * @return boolean
      */
-    public function checkExistUser($username) {
+    public function checkActivateUser($activationCd = null) {
     	
-    	$sql = $this->select()->where('user_name = ?', $username);
+    	$sql = $this->select()
+    			->where("verified = '0'")
+    			->where("verification_code = ?", $activationCd);
     	return count($this->fetchAll($sql)) > 0 ? true : false;
     }
 }
