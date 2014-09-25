@@ -17,21 +17,39 @@ class Questions extends Zend_Db_Table {
 	 *
 	 * @var primary key, use array for multiple key
 	 */
-	protected $_key = 'class_id';
+	protected $_key = array('question_id', 'major_id', 'class_id', 'submajor_id');
 	
 	/**
-	 * @var Questions
+	 * 
+	 * @param string $questionId
+	 * @param string $majorId
+	 * @param string $submajorId
+	 * @param string $classId
 	 */
-	protected static $_instance = null;
+	public function getQuestionByKey($questionId = null, $majorId = null, $submajorId = null, $classId = null) {
+		
+		$sql = $this->select()
+				->where("question_id = ?", $questionId)
+				->where("major_id = ?", $majorId)
+				->where("submajor_id = ?", $submajorId)
+				->where("class_id = ?", $classId);
+		
+		return $this->fetchRow($sql);
+	}
 	
 	/**
-	 * @return Questions
+	 * 
+	 * @param string $majorId
+	 * @param string $submajorId
+	 * @param string $classId
 	 */
-	public static function getInstance() {
-		if (null === self::$_instance) {
-			self::$_instance = new self();
-		}
-	
-		return self::$_instance;
+	public function getQuestionsByMajorClass($majorId = null, $submajorId = null, $classId = null) {
+		
+		$sql = $this->select()
+				->where("major_id = ?", $majorId)
+				->where("submajor_id = ?", $submajorId)
+				->where("class_id = ?", $classId);
+		
+		return $this->fetchAll($sql);
 	}
 }

@@ -42,44 +42,152 @@
                     	</div>
                     </div>
                 </div>
-
+				<?php $idx1 = rand(0, count($this->class_12) - 1);?>
+				<?php $idx2 = rand(0, count($this->class_12) - 1);?>
+				<?php $idx3 = rand(0, count($this->class_12) - 1);?>
+				<?php $idx4 = rand(0, count($this->class_12) - 1);?>
+				<?php $idx5 = rand(0, count($this->class_12) - 1);?>
                 <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
                     <a href="#"><span class="tile-group-title fg-orange">Trắc nghiệm lớp 12 <span class="icon-arrow-right-5"></span></span></a>
                     <div class="tile quadro double-vertical ol-transparent">
                     	<div class="title-content image">
-                    		<img src="/resources/metro/images/hoahoc2.jpg" class="span8">
+                    		<img src="<?php echo $this->class_12[$idx1]['submajor_img'];?>" class="span8">
                     	</div>
                     	<div class="brand bg-dark opacity">
-                    		<span class="text">Bài trắc nghiệm số 69: Kim loại kiềm</span>
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx1]['submajor_name'];?></span>
                     	</div>
                     </div>
-                    <div class="tile double ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile double ol-transparent"></div>
+                    <div class="tile double live" data-role="live-tile" data-effect="slideUp" data-easing="easeInCirc">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_12[$idx2]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx2]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double live" data-role="live-tile" data-effect="slideUp" data-easing="easeInCirc">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_12[$idx3]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx3]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_12[$idx4]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx4]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_12[$idx5]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx5]['submajor_name'];?></span>
+                    	</div>
+                    </div>
                 </div>
 
+                <?php $idx1 = rand(0, count($this->class_11) - 1);?>
+				<?php $idx2 = rand(0, count($this->class_11) - 1);?>
+				<?php $idx3 = rand(0, count($this->class_11) - 1);?>
+				<?php $idx4 = rand(0, count($this->class_11) - 1);?>
+				<?php $idx5 = rand(0, count($this->class_11) - 1);?>
+                
                 <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
                     <a href="#"><span class="tile-group-title fg-cobalt">Trắc nghiệm lớp 11 <span class="icon-arrow-right-5"></span></span></a>
-                    <div class="tile quadro double-vertical ol-transparent"></div>
-                    <div class="tile double ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile double ol-transparent"></div>
+                    <div class="tile quadro double-vertical ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_11[$idx1]['submajor_img'];?>" class="span8">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx1]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_11[$idx2]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx2]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_11[$idx3]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx3]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_11[$idx4]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx4]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_11[$idx5]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx5]['submajor_name'];?></span>
+                    	</div>
+                    </div>
                 </div>
+                
+                <?php $idx1 = rand(0, count($this->class_10) - 1);?>
+				<?php $idx2 = rand(0, count($this->class_10) - 1);?>
+				<?php $idx3 = rand(0, count($this->class_10) - 1);?>
+				<?php $idx4 = rand(0, count($this->class_10) - 1);?>
+				<?php $idx5 = rand(0, count($this->class_10) - 1);?>
                 
                 <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
                     <a href="#"><span class="tile-group-title fg-yellow">Trắc nghiệm lớp 10 <span class="icon-arrow-right-5"></span></span></a>
-                    <div class="tile quadro double-vertical ol-transparent"></div>
-                    <div class="tile double ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile ol-transparent"></div>
-                    <div class="tile double ol-transparent"></div>
+                    <div class="tile quadro double-vertical ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_10[$idx1]['submajor_img'];?>" class="span8">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx1]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_10[$idx2]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx2]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_10[$idx3]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx3]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_10[$idx4]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx4]['submajor_name'];?></span>
+                    	</div>
+                    </div>
+                    <div class="tile double ol-transparent">
+                    	<div class="title-content image">
+                    		<img src="<?php echo $this->class_10[$idx5]['submajor_img'];?>" class="span4">
+                    	</div>
+                    	<div class="brand bg-dark opacity">
+                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx5]['submajor_name'];?></span>
+                    	</div>
+                    </div>
                 </div>
             </div>

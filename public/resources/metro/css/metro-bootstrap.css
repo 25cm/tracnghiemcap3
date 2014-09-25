@@ -1032,7 +1032,8 @@ a {
 }
 .metro ul,
 .metro ol {
-  margin-left: 5px;
+  /*margin-left: 5px;  - base  */
+  margin-left: 40px;  /* modified */
   padding-left: 15px;
   font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
   font-weight: normal;
