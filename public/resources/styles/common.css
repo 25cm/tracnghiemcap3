@@ -28,3 +28,88 @@
 .back-to-home {
 	margin-top: 20px;
 }
+
+.space5 {
+	clear: both;
+	width: 100%;
+	height: 5px;
+}
+
+.space10 {
+	clear: both;
+	width: 100%;
+	height: 10px;
+}
+
+.space15 {
+	clear: both;
+	width: 100%;
+	height: 15px;
+}
+
+.baseline {
+	border-bottom: 1px solid #EBEBE9;
+	height: 1px;
+	width: 100%;
+	clear: both;
+}
+
+.breadcrumb {
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: none;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+}
+
+.question_header {
+	width: 927px;
+	height: 35px;
+/*	background: #3eaba2;*/
+	margin: 0 auto;
+	font-size: 14px;
+	font-weight: 700;
+	/*color: #fff;*/
+	line-height: 35;
+}
+
+.question_content {
+	width: 956px;
+	padding: 10px;
+	border: 1px solid;
+	
+}
+
+.question_row {
+	float: left;
+	padding: 5px 0px 5px 20px;
+}
+
+.question_info {
+	float: left;
+	font-weight: 900;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-family: tahoma;
+	color: #2D36D9;
+	/*padding-left: 10px;*/
+}
+
+.question_time {
+	float: right;
+	padding-right: 10px;
+}
+
+.question_no {
+	font-weight: 700;
+	text-decoration: underline;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-family: tahoma;
+	color: #2D36D9;
+}
+
+.question_text {
+	font-size: 13px;
+	line-height: 25px;
+}

@@ -30,7 +30,7 @@ class Controller_Plugin_Default extends Zend_Controller_Plugin_Abstract {
 // // 				$redirector->gotoUrl($redirTo);
 // // 			}
 // 		}
-
+		
 		$configPath = pjoin(MODULE_PATH, 'default/configs/controllers') . '/' . $this->getRequest()->getControllerName() . '.ini';
 		if(file_exists($configPath)) {
 			$config = new Zend_Config_Ini($configPath);

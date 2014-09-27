@@ -20,6 +20,22 @@ class Questions extends Zend_Db_Table {
 	protected $_key = array('question_id', 'major_id', 'class_id', 'submajor_id');
 	
 	/**
+	 * @var Users
+	 */
+	protected static $_instance = null;
+	
+	/**
+	 * @return Users
+	 */
+	public static function getInstance() {
+		if (null === self::$_instance) {
+			self::$_instance = new self();
+		}
+	
+		return self::$_instance;
+	}
+	
+	/**
 	 * 
 	 * @param string $questionId
 	 * @param string $majorId
