@@ -8,7 +8,7 @@
 <div class="space15"></div>
 <div class="space10"></div>
 
-<form action="/english/submission">
+<form action="/english/submission" id="myform" method="post">
 	<?php $questionIdx = 1;?>
 	<?php foreach ($this->questions as $question): ?>
 		<!-- Max 10 questions per page -->
@@ -58,8 +58,8 @@
 
 		function SessionExpireEvent() {
 		    clearInterval(myInterval);
-
-		    alert("Session expired");
+			// Forced submit
+			$("#myform").submit();
 		}
 	});
 </script>

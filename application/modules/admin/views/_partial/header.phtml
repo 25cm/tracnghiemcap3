@@ -1,0 +1,47 @@
+<?php $auth = Zend_Auth::getInstance(); ?>
+
+<div class="bg-blue">
+	<div class="container" style="padding: 10px 0;">
+		<div class="grid no-margin">
+        	<div class="row no-margin">
+	            <div class="span6 padding10">
+					<h3 class="fg-white">Trắc nghiệm cấp 3</h3>
+	                <p class="fg-white">Đồ án tốt nghiệp khóa học lập trình Zend framework</p>
+	            </div>           
+			</div>            
+		</div>                
+	</div>
+</div>
+<nav class="navigation-bar light">
+	<nav class="navigation-bar-content">
+		
+		<div class="no-tablet-portrait">
+			<div class="element">
+				<a href="/index"><span class="icon-home"></span></a>
+			</div>
+			<span class="element-divider"></span>			
+			<div class="element">
+				<div class="input-control text">
+				    <input type="text" />
+				    <button class="btn-search"></button>
+				</div>
+			</div>
+        	<div class="element place-right">
+        		<?php if ($auth->hasIdentity()):?>
+        			<a href="/auth/logout">Thoát</a>
+        		<?php else:?>
+        			<a href="/register">Đăng ký</a>
+        		<?php endif;?>
+			</div>
+            <span class="element-divider place-right"></span>
+            <button class="element image-button image-left place-right">
+            	<?php if ($auth->hasIdentity()):?>
+            		<?php echo $auth->getIdentity()->user_name; ?>
+            	<?php else:?>
+            		<?php echo '<a href="/auth/login">Đăng nhập</a>';?>
+            	<?php endif;?>
+            	<img src="/resources/metro/images/me.jpg"/>
+            </button>
+		</div>		
+	</nav>
+</nav>

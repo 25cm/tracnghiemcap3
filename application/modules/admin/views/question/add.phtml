@@ -1,0 +1,58 @@
+<form action="/admin/question/confirm-add" method="post">
+<fieldset>
+	<legend>Thêm câu hỏi</legend>
+	<label>Lớp&nbsp;<span class="required">*</span></label>
+    <div class="input-control select size4">
+    	<?php echo $this->formSelect('class_id', null, null, $this->classes);?>
+    	<?php echo $this->formError('class_id')?>
+	</div>
+    <label>Lĩnh vực câu hỏi&nbsp;<span class="required">*</span></label>
+    <div class="input-control select size4">
+    	<?php echo $this->formSelect('major_id', null, null, $this->majors);?>
+    	<?php echo $this->formError('major_id')?>
+    </div>
+    <label>Lĩnh vực con&nbsp;<span class="required">*</span></label>
+    <div class="input-control select size4">
+    	<?php echo $this->formSelect('submajor_id', null, null, $this->submajors)?>
+    	<?php echo $this->formError('submajor_id')?>
+	</div>
+	<label>Câu hỏi&nbsp;<span class="required">*</span></label>
+	<div class="input-control textarea size6">
+		<?php echo $this->formTextarea('question', null, array('rows' => '7'));?>
+		<?php echo $this->formError('question'); ?>
+	</div>
+	<label>Đáp án 1&nbsp;<span class="required">*</span></label>
+	<div class="input-control text size6">
+		<?php echo $this->formText('answer_1', null, array('placeholder' => 'type your answer 1'));?>
+		<?php echo $this->formError('answer_1');?>
+	</div>
+	<label>Đáp án 2&nbsp;<span class="required">*</span></label>
+	<div class="input-control text size6">
+		<?php echo $this->formText('answer_2', null, array('placeholder' => 'type your answer 2'));?>
+		<?php echo $this->formError('answer_2');?>
+	</div>
+	<label>Đáp án 3&nbsp;<span class="required">*</span></label>
+	<div class="input-control text size6">
+		<?php echo $this->formText('answer_3', null, array('placeholder' => 'type your answer 3'));?>
+		<?php echo $this->formError('answer_3');?>
+	</div>
+	<label>Đáp án 4&nbsp;<span class="required">*</span></label>
+	<div class="input-control text size6">
+		<?php echo $this->formText('answer_4', null, array('placeholder' => 'type your answer 4'));?>
+		<?php echo $this->formError('answer_4');?>
+	</div>
+	<label>Đáp án đúng&nbsp;<span class="required">*</span></label>
+	<div class="input-control select size2">
+		<?php echo $this->formSelect('correct_answer', null, null, array('1' => 'Đáp án 1', '2' => 'Đáp án 2', '3' => 'Đáp án 3', '4' => 'Đáp án 4'));?>
+	</div>
+
+	<div class="clearfix"></div>
+    <div class="space15"></div>
+
+    <input type="submit" class="info" value="Thêm câu hỏi">&nbsp;&nbsp;
+    <input type="reset" class="info" value="Nhập lại">
+
+    <div style="margin-top: 20px"></div>
+
+</fieldset>                    
+</form>

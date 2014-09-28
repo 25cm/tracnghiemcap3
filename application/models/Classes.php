@@ -34,4 +34,14 @@ class Classes extends Zend_Db_Table {
 	
 		return self::$_instance;
 	}
+	
+	/**
+	 * getClassesInfo
+	 */
+	public function getClassesInfo() {
+		$sql = $this->select()
+			->order('class_id');
+		
+		return $this->fetchAll($sql);
+	}
 }

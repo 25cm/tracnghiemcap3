@@ -18,7 +18,13 @@ class RegisterController extends Controller {
 	 * 
 	 */
 	public function registerAction() {
-		
+		// Get classes info
+		$classes = Classes::getInstance()->getClassesInfo();
+		$classLst = array();
+		foreach ($classes as $c) {
+			$classLst[$c->class_id] = $c->class_name;
+		}
+		$this->view->classes = $classLst;
 	}
 	
 	/**

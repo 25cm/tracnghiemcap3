@@ -36,6 +36,19 @@ class Questions extends Zend_Db_Table {
 	}
 	
 	/**
+	 * getQuestionInfo
+	 */
+	public function getQuestionInfo() {
+		
+		$sql = $this->select()
+				->order('class_id')
+				->order('major_id')
+				->order('submajor_id');
+		
+		return $this->fetchAll($sql);
+	}
+	
+	/**
 	 * 
 	 * @param string $questionId
 	 * @param string $majorId

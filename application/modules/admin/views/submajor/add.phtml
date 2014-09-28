@@ -1,0 +1,46 @@
+<form id="submajorForm" action="/admin/submajor/confirm-add" method="post" enctype="multipart/form-data">
+<fieldset>
+	<legend>Thêm lĩnh vực con</legend>
+	<label>Lớp&nbsp;<span class="required">*</span></label>
+    <div class="input-control select size4">
+    	<?php echo $this->formSelect('class_id', null, null, $this->classes);?>
+    	<?php echo $this->formError('class_id')?>
+	</div>
+	<label>Lĩnh vực câu hỏi&nbsp;<span class="required">*</span></label>
+    <div class="input-control select size4">
+    	<?php echo $this->formSelect('major_id', null, null, $this->majors);?>
+    	<?php echo $this->formError('major_id')?>
+    </div>
+    <label>Tên lĩnh vực con&nbsp;<span class="required">*</span></label>
+    <div class="input-control text size6">
+		<?php echo $this->formText('submajor_name', null, array('placeholder' => 'type text'));?>
+		<?php echo $this->formError('submajor_name');?>
+	</div>
+
+	<div class="clearfix"></div>
+    <div class="space15"></div>
+
+    <input type="submit" class="info" value="Thêm">&nbsp;&nbsp;
+    <input type="reset" class="info" value="Nhập lại">
+
+    <div style="margin-top: 20px"></div>
+
+</fieldset>                    
+</form>
+
+<script type="text/javascript">
+// 	$(document).ready(function(){
+// 		$("#submitBtn").click(function(){
+// 			var url = '/admin/submajor/confirm-add';
+// 			$.ajax({
+// 		        type: "POST",
+// 		        url: url,
+// 		        data: $("#submajorForm").serialize(), // serializes the form's elements.
+// 		        success: function(data)
+// 		        {
+// 		        	alert(data); // show response from the php script.
+// 		        }
+// 	        });
+// 		});
+// 	});
+</script>

@@ -34,4 +34,25 @@ class Majors extends Zend_Db_Table {
 	
 		return self::$_instance;
 	}
+	
+	/**
+	 * no param
+	 */
+	public function getMajorsInfo() {
+		$sql = $this->select()
+				->order('major_id');
+		
+		return $this->fetchAll($sql);
+	}
+	
+	/**
+	 * 
+	 * @param string $majorId
+	 */
+	public function getMajorsByKey($majorId = null) {
+		$sql = $this->select()
+				->where('major_id = ?', $majorId);
+		
+		return $this->fetchRow($sql);
+	}
 }

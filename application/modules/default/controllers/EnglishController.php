@@ -39,6 +39,20 @@ class EngLishController extends Controller {
 	}
 	
 	public function submissionAction() {
+		
+		if ($this->_request->isPost()) {
+			$answer1 = $this->_request->getParam('answer_1');
+			$answer2 = $this->_request->getParam('answer_2');
+			$answer3 = $this->_request->getParam('answer_3');
+			$answer4 = $this->_request->getParam('answer_4');
+			$answer5 = $this->_request->getParam('answer_5');
+			$answer6 = $this->_request->getParam('answer_6');
+			$answer7 = $this->_request->getParam('answer_7');
+			$answer8 = $this->_request->getParam('answer_8');
+			$answer9 = $this->_request->getParam('answer_9');
+			$answer10 = $this->_request->getParam('answer_10');
+		}
+		
 		$this->_helper->viewRenderer->setNoRender();
 	}
 	

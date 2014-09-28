@@ -23,12 +23,7 @@
 	</div>
     <label>Lớp&nbsp;<span class="required">*</span></label>
     <div class="input-control select size4">
-    	<?php //echo $this->formSe?>
-		<select name="class_id">
-			<option value="10">Lớp 10</option>
-			<option value="11">Lớp 11</option>
-			<option value="12">Lớp 12</option>
-		</select>
+    	<?php echo $this->formSelect('class_id', null, null, $this->classes);?>
 	</div>
 	<label>Email&nbsp;<span class="required">*</span></label>
 	<div class="input-control text size4">
@@ -44,7 +39,7 @@
 	<div class="clearfix"></div>
     <div class="space15"></div>
 
-    <input type="submit" class="info" value="Đăng ký">
+    <input type="submit" class="info" value="Đăng ký">&nbsp;&nbsp;
     <input type="reset" class="info" value="Nhập lại">
 
     <div style="margin-top: 20px"></div>

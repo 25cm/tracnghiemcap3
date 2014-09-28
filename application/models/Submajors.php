@@ -39,7 +39,11 @@ class Submajors extends Zend_Db_Table {
 	 * return Zend_Db_Table_Rows
 	 */
 	public function getSubmajorsInfo() {
-		return $this->fetchAll($this->select());
+		$sql = $this->select()
+			->from(array('s' => 'Submajors'))->setIntegrityCheck(false)
+			->joinLeft(array('m' => 'Majors'), 's.major_id = m.major_id');
+		
+		return $this->fetchAll($sql);
 	}
 	
 	/**
@@ -66,5 +70,18 @@ class Submajors extends Zend_Db_Table {
 				->where("submajor_id = ?", $submajorId);
 		
 		return $this->fetchRow($sql);
+	}
+	
+	/**
+	 * 
+	 * @param string $classId
+	 * @param string $majorId
+	 */
+	public function getSubmajorsByClassIdMajorId($classId = null, $majorId = null) {
+		$sql = $this->select()
+				->where("class_id = ?", $classId)
+				->where("major_id = ?", $majorId);
+		
+		return $this->fetchAll($sql);
 	}
 }
