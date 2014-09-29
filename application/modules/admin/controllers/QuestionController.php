@@ -46,7 +46,7 @@ class Admin_QuestionController extends Controller {
 		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
 		$subMajorLst = array();
 		foreach ($subMajors as $s) {
-			$subMajorLst[] = $s->submajor_name;
+			$subMajorLst[$s->submajor_id] = $s->submajor_name;
 		}
 		$this->view->submajors = $subMajorLst;
 	}
@@ -55,6 +55,44 @@ class Admin_QuestionController extends Controller {
 	 * confirmAddAction
 	 */
 	public function confirmAddAction() {
-		
+		if ($this->_request->isPost()) {
+			$params = $this->_request->getParams();
+			if ($this->saveQuestions($params)) {
+				echo '<script>alert("Thêm thành công!");</script>';
+			} else {
+				echo '<script>alert("Đã có lỗi xảy ra!");</script>';
+			}
+			
+			$this->_forward('/add');
+		}
+	}
+	
+	/**
+	 * 
+	 * @param array $params
+	 * @return boolean
+	 */
+	private function saveQuestions(array $params) {
+		try {
+			$row = Questions::getInstance()->fetchNew();
+			$row->major_id = $params['major_id'];
+			$row->submajor_id = $params['submajor_id'];
+			$row->class_id = $params['class_id'];
+			$row->question = $params['question'];
+			$row->answer_1 = $params['answer_1'];
+			$row->answer_2 = $params['answer_2'];
+			$row->answer_3 = $params['answer_3'];
+			$row->answer_4 = $params['answer_4'];
+			$row->correct_answer = $params['correct_answer'];
+			$row->insert_dt = date('y-m-d');
+			$row->insert_user = Constants::ADMIN_NAME;
+			$row->update_dt = date('y-m-d');
+			$row->update_user = Constants::ADMIN_NAME;
+				
+			$row->save();
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
 	}
 }
