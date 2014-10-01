@@ -67,6 +67,30 @@ class Admin_QuestionController extends Controller {
 		}
 	}
 	
+	public function changeAction() {
+	    
+	    if ($this->getRequest()->isXmlHttpRequest()) {
+	        $arr = array("a", "b", "c", "d");
+	       echo json_encode($arr);
+	    }
+	    
+	    $this->_helper->viewRenderer->setNoRender(true);
+// 	    $classId = $this->_request->getParameter('class_id');
+// 	    $majorId = $this->_request->getParameter('major_id'); echo $classId;
+	    
+// 	    // Get submajors info
+// 		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
+// 	    $str='';
+// 	    foreach ($subMajors as $s) {
+// 	        $str=$str . "$s->submajor_name" . ",";
+// 	    }
+	    
+// 	    $str=substr($str,0,(strLen($str)-1)); // Removing the last char , from the string
+	    
+	    
+// 	    echo json_encode($str);
+	}
+	
 	/**
 	 * 
 	 * @param array $params
