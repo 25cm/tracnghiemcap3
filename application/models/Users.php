@@ -89,5 +89,16 @@ class Users extends Zend_Db_Table {
     			->where("verification_code = ?", $activationCd);
     	return count($this->fetchAll($sql)) > 0 ? true : false;
     }
+    
+    /**
+     * 
+     * @param string $userId
+     */
+    public function getUsersById($userId = null) {
+    	$sql = $this->select()
+    			->where('user_id = ?', $userId);
+    	
+    	return $this->fetchRow($sql);
+    }
 }
 ?>

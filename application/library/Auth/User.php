@@ -49,7 +49,7 @@ class Auth_User {
 		// Login success
 		if ($result->isValid()) {
 			// Storage user info
-			$data = $authAdapter->getResultRowObject(array('user_name', 'email', 'avatar_path'));
+			$data = $authAdapter->getResultRowObject(array('user_id', 'user_name', 'email', 'avatar_path'));
 			$auth->getStorage()->write($data);
 			// Get user info
 			//$auth->getIdentity()->user_name;

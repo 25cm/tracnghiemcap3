@@ -1,1 +1,69 @@
-<?php
+<div id="countdowntimer"><span id="future_date"></span></div>
+
+<div class="space15"></div>
+<span class="question_info"> Bài kiểm tra <?php echo $this->major_name_vi;?> lớp <?php echo $this->questions[0]->class_id?>:&nbsp;<?php echo $this->submajor_name;?> </span>
+<span id="timer" class="question_time icon-clock">&nbsp;</span>
+<div class="space5"></div>
+<div class="baseline"></div>
+<div class="space15"></div>
+<div class="space10"></div>
+
+<form action="/<?php echo $this->major_name_en;?>/submission" id="myform" method="post">
+	<?php $questionIdx = 1;?>
+	<?php foreach ($this->questions as $question): ?>
+		<!-- Max 10 questions per page -->
+		<?php if ($questionIdx > 10) break;?>
+		<div class="question_no">Câu số <?php echo $questionIdx;?></div>
+		<div class="space10"></div>
+		<div class="question_text">
+			<p><?php echo $question->question;?></p>
+		</div>
+		<input type="radio" name="answer_<?php echo $questionIdx?>" value="1">&nbsp;A. <?php echo $question->answer_1;?><br>
+		<input type="radio" name="answer_<?php echo $questionIdx?>" value="2">&nbsp;B. <?php echo $question->answer_2;?><br>
+		<input type="radio" name="answer_<?php echo $questionIdx?>" value="3">&nbsp;C. <?php echo $question->answer_3;?><br>
+		<input type="radio" name="answer_<?php echo $questionIdx?>" value="4">&nbsp;D. <?php echo $question->answer_4;?><br>
+		<div class="space15"></div>
+		<div class="baseline"></div>
+		<div class="space10"></div>
+		<?php $questionIdx++;?>
+	<?php endforeach; ?>
+	<?php echo $this->formHidden('class_id', $this->questions[0]->class_id);?>
+	<?php echo $this->formHidden('major_id', $this->questions[0]->major_id);?>
+	<?php echo $this->formHidden('submajor_id', $this->questions[0]->submajor_id);?>
+	<span class="question_time"><span class="required">(*)</span>1 câu trả lời đúng = 1 điểm.<br> <span class="required">(*)</span>Trả lời đúng cả 10 câu được cộng thêm 1 điểm.</span>
+	<div class="space10"></div>
+	<input type="submit" class="info large" value="Nộp bài">
+	<div class="space15"></div>
+	<div class="space15"></div>
+	
+</form>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#timer').countdowntimer({
+	        minutes : 14,
+	        seconds : 59 // starting from 14:59
+	    });
+
+		var SessionTime = 899000; // 899s = 14:59s
+		var tickDuration = 1000;
+
+		var myInterval = setInterval(function() {
+		    SessionTime = SessionTime - tickDuration
+		}, 1000);
+
+		var myTimeOut = setTimeout(SessionExpireEvent, SessionTime);
+
+		$("input").click(function() {
+		    clearTimeout(myTimeOut);
+		    SessionTime = 10000;
+		    myTimeOut = setTimeout(SessionExpireEvent, SessionTime);
+		});
+
+		function SessionExpireEvent() {
+		    clearInterval(myInterval);
+			// Forced submit
+			$("#myform").submit();
+		}
+	});
+</script>

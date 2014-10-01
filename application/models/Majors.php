@@ -55,4 +55,48 @@ class Majors extends Zend_Db_Table {
 		
 		return $this->fetchRow($sql);
 	}
+	
+	/**
+	 * 
+	 * @param string $majorId
+	 * @return string
+	 */
+	public function getMajorNameViById($majorId = null) {
+		$majorNameVi = '';
+		$sql = $this->select()
+				->where('major_id = ?', $majorId);
+		
+		$majorNameEn = $this->fetchRow($sql)->major_name;
+		switch ($majorNameEn) {
+			case Constants::DIA_LY:
+				$majorNameVi = 'Địa lý';
+				break;
+			case Constants::HOA_HOC:
+				$majorNameVi = 'Hóa học';
+				break;
+			case Constants::SINH_HOC:
+				$majorNameVi = 'Sinh học';
+				break;
+			case Constants::TIENG_ANH:
+				$majorNameVi = 'Tiếng Anh';
+				break;
+			case Constants::VAT_LY:
+				$majorNameVi = 'Vật lý';
+				break;
+		}
+		
+		return $majorNameVi;
+	}
+	
+	/**
+	 *
+	 * @param string $majorId
+	 * @return string
+	 */
+	public function getMajorNameById($majorId = null) {
+		$sql = $this->select()
+		->where('major_id = ?', $majorId);
+		
+		return $this->fetchRow($sql)->major_name;
+	}
 }
