@@ -1,4 +1,4 @@
-<form action="/register/confirm-register" method="post">
+<form id="registerForm" action="/register/confirm-register" method="post">
 <fieldset>
 	<legend>Đăng ký tài khoản</legend>
     <label>Tên đăng nhập&nbsp;<span class="required">*</span></label>
@@ -6,19 +6,15 @@
     	<?php echo $this->formText('username', $this->request->username, array('placeholder' => 'type text')); ?>
     	<?php echo $this->formError('username');?>
     </div>
-    <label>Mật khẩu&nbsp;<span class="required">*</span></label>
+    <label class="col-lg-3 control-label">Mật khẩu&nbsp;<span class="required">*</span></label>
     <div class="input-control password size4" data-role="input-control">
+        <input type="password" name="password" />
     	<?php echo $this->formPassword('password', $this->request->password, array('placeholder' => 'type password')); ?>
-    	<?php if ($this->formError('password') == null):?>
-    		<span style="visibility: hidden">&nbsp;</span>
-    	<?php endif;?>
     	<?php echo $this->formError('password');?>
 	</div>
+	<label class="col-lg-3 control-label">Xác nhận mật khẩu&nbsp;<span class="required">*</span></label>
     <div class="input-control password size4" data-role="input-control">
     	<?php echo $this->formPassword('retype_password', $this->request->retype_password, array('placeholder' => 're-type password')); ?>
-    	<?php if ($this->formError('retype_password') == null):?>
-    		<span style="visibility: hidden">&nbsp;</span>
-    	<?php endif;?>
     	<?php echo $this->formError('retype_password');?>
 	</div>
     <label>Lớp&nbsp;<span class="required">*</span></label>
@@ -46,3 +42,49 @@
 
 </fieldset>                    
 </form>
+
+<form id="registerForm1" class="form-horizontal1">
+    <div class="form-group1">
+        <label class="col-lg-3 control-label1">Password</label>
+        <div class="col-lg-51">
+            <input type="password" name="password" />
+        </div>
+    </div>
+
+<!--     <div class="form-group"> -->
+        <label class="col-lg-3 control-label1">Retype password</label>
+<!--         <div class="col-lg-5"> -->
+            <input type="password" class="form-control" name="retype_password" />
+<!--         </div> -->
+<!--     </div> -->
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#registerForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            password: {
+                validators: {
+                    identical: {
+                        field: 'retype_password',
+                        message: 'The password and its confirm are not the same'
+                    }
+                }
+            },
+            retype_password: {
+                validators: {
+                    identical: {
+                        field: 'password',
+                        message: 'The password and its confirm are not the same'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
