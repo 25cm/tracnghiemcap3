@@ -1,0 +1,31 @@
+<form id="contactForm" action="/contact/confirm-request" method="post">
+<fieldset>
+	<legend>Liên hệ với chúng tôi</legend>
+    <label>Tên đầy đủ của bạn&nbsp;<span class="required">*</span></label>
+    <div class="input-control text size4" data-role="input-control">
+    	<?php echo $this->formText('username', $this->request->username, array('placeholder' => 'type text')); ?>
+    	<?php echo $this->formError('username');?>
+    </div>
+	<label>Email&nbsp;<span class="required">*</span></label>
+	<div class="input-control text size4">
+		<?php echo $this->formText('email', $this->request->email, array('placeholder' => 'type email'));?>
+		<?php echo $this->formError('email'); ?>
+	</div>
+	<label>Tin nhắn</label>
+	<div class="input-control text size4">
+		<?php echo $this->formTextArea('message', $this->request->message, array('rows' => 8, 'placeholder' => 'maximum of 1000 characters'));?>
+		<?php echo $this->formError('message');?>
+	</div>
+
+	<div class="clearfix"></div>
+    <div class="space15"></div>
+	<div class="space15"></div>
+	<div class="space15"></div>
+	<div class="space15"></div>
+	<div class="space15"></div>
+	<div class="space15"></div>
+
+    <input id="submitBtn" type="submit" class="info" value="Gửi">
+    <div style="margin-top: 20px"></div>
+</fieldset>                    
+</form>

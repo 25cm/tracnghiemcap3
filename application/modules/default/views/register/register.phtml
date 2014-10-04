@@ -8,7 +8,6 @@
     </div>
     <label class="col-lg-3 control-label">Mật khẩu&nbsp;<span class="required">*</span></label>
     <div class="input-control password size4" data-role="input-control">
-        <input type="password" name="password" />
     	<?php echo $this->formPassword('password', $this->request->password, array('placeholder' => 'type password')); ?>
     	<?php echo $this->formError('password');?>
 	</div>
@@ -35,7 +34,7 @@
 	<div class="clearfix"></div>
     <div class="space15"></div>
 
-    <input type="submit" class="info" value="Đăng ký">&nbsp;&nbsp;
+    <input id="submitBtn" type="submit" class="info" value="Đăng ký">&nbsp;&nbsp;
     <input type="reset" class="info" value="Nhập lại">
 
     <div style="margin-top: 20px"></div>
@@ -43,47 +42,15 @@
 </fieldset>                    
 </form>
 
-<form id="registerForm1" class="form-horizontal1">
-    <div class="form-group1">
-        <label class="col-lg-3 control-label1">Password</label>
-        <div class="col-lg-51">
-            <input type="password" name="password" />
-        </div>
-    </div>
-
-<!--     <div class="form-group"> -->
-        <label class="col-lg-3 control-label1">Retype password</label>
-<!--         <div class="col-lg-5"> -->
-            <input type="password" class="form-control" name="retype_password" />
-<!--         </div> -->
-<!--     </div> -->
-</form>
-
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#registerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            password: {
-                validators: {
-                    identical: {
-                        field: 'retype_password',
-                        message: 'The password and its confirm are not the same'
-                    }
-                }
-            },
-            retype_password: {
-                validators: {
-                    identical: {
-                        field: 'password',
-                        message: 'The password and its confirm are not the same'
-                    }
-                }
-            }
+    $('#submitBtn').click(function(){
+        var psw = $('#password').val();
+        var confirmPsw = $('#retype_password').val();
+
+        if (psw != confirmPsw) {
+			alert('Mật khẩu xác nhận không đúng!');
+			return false;
         }
     });
 });

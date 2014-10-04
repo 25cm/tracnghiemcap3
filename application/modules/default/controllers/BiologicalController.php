@@ -12,10 +12,10 @@ class BiologicalController extends Controller {
 	 */
 	public function indexAction() {
 		// Login check
-		$auth = Zend_Auth::getInstance();
-		if (!$auth->hasIdentity()) {
-			$this->_redirect('auth/login');
-		}
+// 		$auth = Zend_Auth::getInstance();
+// 		if (!$auth->hasIdentity()) {
+// 			$this->_redirect('auth/login');
+// 		}
 		
 		$this->_helper->viewRenderer->setNoRender();
 	}
@@ -24,6 +24,15 @@ class BiologicalController extends Controller {
 	 * lop10Action
 	 */
 	public function lop10Action() {
+		// Goes into from menu
+		if (null === $this->_getParam('id')) {
+			// Get list submajors
+			$subMajorsObj = Submajors::getInstance()->getSubmajorsByClassIdMajorId(Constants::LOP_10, Constants::ID_SINH_HOC);
+			$this->_helper->viewRenderer('index');
+			$this->view->subMajors = $subMajorsObj;
+			return;
+		}
+		
 		// Login check
 		$auth = Zend_Auth::getInstance();
 		if (!$auth->hasIdentity()) {
@@ -66,13 +75,22 @@ class BiologicalController extends Controller {
 	 * lop11Action
 	 */
 	public function lop11Action() {
+		// Goes into from menu
+		if (null === $this->_getParam('id')) {
+			// Get list submajors
+			$subMajorsObj = Submajors::getInstance()->getSubmajorsByClassIdMajorId(Constants::LOP_11, Constants::ID_SINH_HOC);
+			$this->_helper->viewRenderer('index');
+			$this->view->subMajors = $subMajorsObj;
+			return;
+		}
+		
 		// Login check
 		$auth = Zend_Auth::getInstance();
 		if (!$auth->hasIdentity()) {
 			$this->_redirect('auth/login');
 		}
 		
-	if ($this->_request->isGet()) {
+		if ($this->_request->isGet()) {
 			$id = $this->getParam('id');
 			if (strlen($id) != 6) {
 				return $this->_forward('/error');
@@ -108,13 +126,22 @@ class BiologicalController extends Controller {
 	 * lop12Action
 	 */
 	public function lop12Action() {
+		// Goes into from menu
+		if (null === $this->_getParam('id')) {
+			// Get list submajors
+			$subMajorsObj = Submajors::getInstance()->getSubmajorsByClassIdMajorId(Constants::LOP_12, Constants::ID_SINH_HOC);
+			$this->_helper->viewRenderer('index');
+			$this->view->subMajors = $subMajorsObj;
+			return;
+		}
+		
 		// Login check
 		$auth = Zend_Auth::getInstance();
 		if (!$auth->hasIdentity()) {
 			$this->_redirect('auth/login');
 		}
 		
-	if ($this->_request->isGet()) {
+		if ($this->_request->isGet()) {
 			$id = $this->getParam('id');
 			if (strlen($id) != 6) {
 				return $this->_forward('/error');

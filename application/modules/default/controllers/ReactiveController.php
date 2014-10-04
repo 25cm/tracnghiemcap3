@@ -11,7 +11,7 @@ class ReactiveController extends Controller {
 	 * indexAction
 	 */
 	public function indexAction() {
-		
+		$this->_forward('/request');
 	}
 	
 	public function requestAction() {

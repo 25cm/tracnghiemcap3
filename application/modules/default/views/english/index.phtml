@@ -1,0 +1,8 @@
+<legend>Tiếng Anh - Lớp <?php echo $this->subMajors[0]->class_id?></legend>
+<?php foreach ($this->subMajors as $item):?>
+	<div class="accordion with-marker span3 place-left margin10" data-role="accordion" data-closeany="false">
+	<div class="accordion-frame">
+		<a class="heading bg-lightBlue fg-white" href="/english/lop<?php echo $item->class_id?>?id=<?php echo $item->major_id . $item->class_id . $item->submajor_id?>"><?php echo $item -> submajor_name;?></a>
+	</div>
+	</div>
+<?php endforeach;?>
