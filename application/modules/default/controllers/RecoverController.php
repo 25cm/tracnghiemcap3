@@ -81,11 +81,14 @@ class RecoverController extends Controller {
 			$html .= '	</body>';
 			$html .= '</html>';
 			
+			// From admin
+			$from = My_Registry::getConfig()->system->mail->setting->username;
+			
 			// Subject
 			$subject = My_Registry::getConfig()->system->mail->recover_password->subject;
 			
 			// Send
-			$mail = new My_Mail($email, $subject, $html);
+			$mail = new My_Mail($from, $email, $subject, $html);
 			$mail->sendHtml();
 		} catch (Zend_Mail_Transport_Exception $e) {
 			throw $e;

@@ -11,6 +11,12 @@ height: auto !important;
 height: 100%;
 margin: 0 auto -4em;
 }
+.menu {
+	border-bottom: 7px solid #C0C0C0;
+}
+.header {
+	
+}
 .footer, .push {
 height: 4em;
 }

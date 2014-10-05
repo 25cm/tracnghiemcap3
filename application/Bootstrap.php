@@ -1,44 +1,34 @@
 <?php
 
+/**
+ * 
+ * @author AnhNV
+ *
+ */
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     protected $_moduleName;
     
+    /**
+     * _initSession
+     */
     protected function _initSession() {
     	Zend_Session::start();
-    	//         if (!(defined('IS_CLI') && IS_CLI)) {
-    	//             $resources = $this->getApplication()->getOption('resources');
-    	//             Zend_Session::setOptions($resources['session']['options']);
-    	//             $sessDb = new Zend_Session_SaveHandler_DbTable($resources['session']['database']);
-    	//             Zend_Session::setSaveHandler($sessDb);
-    	//             Zend_Session::start();
-    	//         }
     }    
 
+    /**
+     * _initAutoload
+     */
     protected function _initAutoload() {
         Zend_Loader_Autoloader::getInstance()->setFallbackAutoloader(true);
         require_once(FRAMEWORK_PATH . '/etc/func.php');
-//         set_include_path(implode(PATH_SEPARATOR, array(
-//         APPLICATION_PATH . '/library/ParameterSheet',
-//         APPLICATION_PATH . '/library/log4php',
-//         APPLICATION_PATH . '/library/log4php/renderers',
-//         APPLICATION_PATH . '/library/log4php/appenders',
-//         APPLICATION_PATH . '/library/log4php/configurators',
-//         APPLICATION_PATH . '/library/log4php/filters',
-//         APPLICATION_PATH . '/library/log4php/helpers',
-//         APPLICATION_PATH . '/library/log4php/layouts',
-//         APPLICATION_PATH . '/library/log4php/pattern',
-//         APPLICATION_PATH . '/library/log4php/xml',
-//         get_include_path()
-//         )
-//         ));
-//         require_once(APPLICATION_PATH.'/library/ParameterSheet/CreatePublishHist.php');
-//         require_once(APPLICATION_PATH.'/library/ParameterSheet/IssueRequest.php');
-//         require_once(APPLICATION_PATH.'/library/ParameterSheet/IssueProduct.php');
     }
 
+    /**
+     * _initView
+     * @return Zend_View
+     */
     protected function _initView() {
-    	
         $view = new Zend_View();
         $view->setEncoding('utf-8');
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('ViewRenderer');
@@ -46,78 +36,45 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         return $view;
     }
 
+    /**
+     * _initPlugin
+     */
     protected function _initPlugin() {
         Zend_Controller_Front::getInstance()->registerPlugin(new Controller_Plugin_Application());
     }
 
-//     protected function _initPath() {
-//         $configPath = APPLICATION_PATH . '/configs/path.ini';
-//         if(file_exists($configPath)) {
-//             $config = new Zend_Config_Ini($configPath);
-//             $array = $config->toArray();
-//             foreach ($array as $key => $value) define($key, $value);
-//         }
-//     }
-
-//     protected function _initMessage() {
-//         $configPath = APPLICATION_PATH . '/configs/message.ini';
-//         if(file_exists($configPath)) {
-//             $config = new Zend_Config_Ini($configPath);
-//             $array = $config->toArray();
-//             foreach ($array as $key => $value) define($key, $value);
-//         }
-//     }
-
+    /**
+     * _initDatabase
+     */
     protected function _initDatabase() {
         $config = $this->getOptions();
         $db = Zend_Db::factory($config['resources']['db']['adapter'], $config['resources']['db']['params'], $config['resources']['db']['params']['profiler']);
-//         $db->setFetchMode(Zend_Db::FETCH_ASSOC);
-//         $db->query("SET NAMES utf-8");
-//         $db->query("SET CHARACTER SET 'utf-8'");
         My_Registry::set('dbConnect', $db);
         Zend_Db_Table::setDefaultAdapter($db);
     }
 
-//     protected function _initSession() {
-//     	Zend_Session::start();
-// //         if (!(defined('IS_CLI') && IS_CLI)) {
-// //             $resources = $this->getApplication()->getOption('resources');
-// //             Zend_Session::setOptions($resources['session']['options']);
-// //             $sessDb = new Zend_Session_SaveHandler_DbTable($resources['session']['database']);
-// //             Zend_Session::setSaveHandler($sessDb);
-// //             Zend_Session::start();
-// //         }
-//     }
-
-//     protected function _initTimezone() {
-//         date_default_timezone_set('Asia/Tokyo');
-//     }
-
+    /**
+     * _initConfig
+     */
     protected function _initConfig() {
         My_Registry::setConfig(new My_Config($this->getApplication()->getOptions(), true));
     }
 
+    /**
+     * _initMail
+     */
     protected function _initMail() {
         $configPath = APPLICATION_PATH . '/configs/mail.ini';
         $config = new Zend_Config_Ini($configPath, APPLICATION_ENV, array('allowModifications' => true));
         My_Registry::setConfig(new Zend_Config($this->fArray_merge(My_Registry::getConfig()->toArray(), $config->toArray())));
     }
 
-//     protected function _initCli() {
-//         if (defined('IS_CLI') && IS_CLI) {
-//             $front = Zend_Controller_Front::getInstance();
-//             $front->setRequest(Zynas_Controller_Request_Cli::create());
-//             $front->setRouter(new Zynas_Controller_Router_Cli());
-//             $front->setResponse(new Zynas_Controller_Response_Cli());
-//         }
-//     }
-
-//     protected function _initLog() {
-//         require_once(APPLICATION_PATH.'/library/log4php/Logger.php');
-//         require_once (APPLICATION_PATH.'/configs/log4config.php');
-//         require_once ( APPLICATION_PATH.'/library/Logger.php');
-//     }
-
+    /**
+     * 
+     * @param unknown $aOld
+     * @param unknown $aNew
+     * @return unknown
+     */
     function fArray_merge ($aOld, $aNew) {
         if(is_array($aOld)) {
             if(is_array($aNew)) {

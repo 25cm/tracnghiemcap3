@@ -4,13 +4,14 @@
 
 // Define path to application directory
 defined('APPLICATION_PATH')
-|| define('APPLICATION_PATH',
-realpath(dirname(__FILE__) . '/../application'));
+	|| define('APPLICATION_PATH',
+		realpath(dirname(__FILE__) . '/../application'));
+	
 // Define application environment
 defined('APPLICATION_ENV')
-|| define('APPLICATION_ENV',
-(getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV')
-: 'production'));
+	|| define('APPLICATION_ENV',
+		(getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+	
 define('MODULE_PATH', APPLICATION_PATH . '/modules');
 define('PUBLIC_PATH', realpath(dirname(__FILE__) . '/../public'));
 define('CAPTCHA_PATH', PUBLIC_PATH . '/captcha');

@@ -116,11 +116,14 @@ class RegisterController extends Controller {
 		$html .= '	</body>';
 		$html .= '</html>';
 		
+		// From admin
+		$from = My_Registry::getConfig()->system->mail->setting->username;
+		
 		// Subject
 		$subject = My_Registry::getConfig()->system->mail->complete_register->subject;
 		
 		// Send
-		$mail = new My_Mail($email, $subject, $html);
+		$mail = new My_Mail($from, $email, $subject, $html);
 		$mail->sendHtml();
 	}
 }

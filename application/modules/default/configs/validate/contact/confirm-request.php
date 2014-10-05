@@ -2,10 +2,7 @@
 
 return array(
 	'username' => array(
-		My_Filter_Input::ALLOW_EMPTY => false,
-		array('Alnum'),
-		array('StringLength', array('max' => 24, 'min' => 6)),
-		array('Db_NoRecordExists', array('table' => 'users', 'field' => 'user_name'))
+		My_Filter_Input::ALLOW_EMPTY => false
 	),
     'email' => array(
 		My_Filter_Input::ALLOW_EMPTY => false,

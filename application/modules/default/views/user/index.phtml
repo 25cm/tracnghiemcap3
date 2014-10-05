@@ -1,0 +1,21 @@
+<?php $auth = Zend_Auth::getInstance();?>
+
+<legend>Thông tin cá nhân</legend>
+<div class="box_row">
+	<span class="box_row_l">Tên đăng nhập</span>:&nbsp;<span><?php echo $auth->getIdentity()->user_name;?></span>
+</div>
+<div class="box_row">
+	<span class="box_row_l">Điểm thành tích</span>:&nbsp;<span><?php echo $this->point;?></span>
+</div>
+<div class="box_row">
+	<span class="box_row_l">Lớp</span>:&nbsp;<span><?php echo $auth->getIdentity()->class_id;?></span>
+</div>
+<div class="box_row">
+	<span class="box_row_l">Email</span>:&nbsp;<span><?php echo $auth->getIdentity()->email;?></span>
+</div>
+<div class="box_row">
+	<span class="box_row_l">Ngày tham gia</span>:&nbsp;<span><?php echo $auth->getIdentity()->insert_dt;?></span>
+</div>
+
+<div class="space15"></div>
+<a href="/user/change-pass">Đổi mật khẩu</a>

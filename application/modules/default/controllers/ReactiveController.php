@@ -75,12 +75,15 @@ class ReactiveController extends Controller {
 		$html .= '		</div>';
 		$html .= '	</body>';
 		$html .= '</html>';
-			
+
+		// From admin
+		$from = My_Registry::getConfig()->system->mail->setting->username;
+		
 		// Subject
 		$subject = My_Registry::getConfig()->system->mail->reactive_account->subject;
 		
 		// Send
-		$mail = new My_Mail($email, $subject, $html);
+		$mail = new My_Mail($from, $email, $subject, $html);
 		$mail->sendHtml();
 	}
 }

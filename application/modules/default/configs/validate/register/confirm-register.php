@@ -16,7 +16,6 @@ return array(
 		My_Filter_Input::ALLOW_EMPTY => false,
 		array('StringLength', array('max' => 12, 'min' => 6)),
 		array('Alnum'),
-		//array('PasswordConfirmation')
 	),
     'email' => array(
 		My_Filter_Input::ALLOW_EMPTY => false,

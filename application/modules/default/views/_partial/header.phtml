@@ -1,5 +1,4 @@
 <?php $auth = Zend_Auth::getInstance(); ?>
-
 <div class="bg-blue">
 	<div class="container" style="padding: 10px 0;">
 		<div class="grid no-margin">
@@ -36,7 +35,7 @@
             <span class="element-divider place-right"></span>
             <button class="element image-button image-left place-right">
             	<?php if ($auth->hasIdentity()):?>
-            		<?php echo $auth->getIdentity()->user_name; ?>
+            		<?php echo '<a href="/user">' . $auth->getIdentity()->user_name .'</a>'; ?>
             	<?php else:?>
             		<?php echo '<a href="/auth/login">Đăng nhập</a>';?>
             	<?php endif;?>

@@ -1,150 +1,108 @@
-			<div class="tile-area no-padding clearfix">
-                <div class="tile-group no-margin no-padding clearfix" style="width: 100%">
-                    <div class="tile double ol-transparent">
-                    	<div class="title-content image">
-                    		<img src="/resources/metro/images/girl-01.jpg" class="span4">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Nhã Uyên - 9999 điểm</span>
-                    	</div>
-                    </div>
-                    <div class="tile double ol-transparent">
-                    	<div class="title-content image">
-                    		<img src="/resources/metro/images/girl-03.jpg" class="span4">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Uyển Nhi - 9998 điểm</span>
-                    	</div>
-                    </div>
-                    <div class="tile double ol-transparent">
-                    	<div class="title-content image">
-                    		<img src="/resources/metro/images/girl-02.jpg" class="span4">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Hương Ly - 9997 điểm</span>
-                    	</div>
-                    </div>
-                    <div class="tile ol-transparent">
-                    	<div class="title-content image">
-                    		<img src="/resources/metro/images/girl120-01.jpg">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Thục Quyên - 9996 điểm</span>
-                    	</div>
-                    </div>
-                    <div class="tile ol-transparent">
-                    	<div class="title-content image">
-                    		<img src="/resources/metro/images/boy120-01.jpg">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Matt - 9995 điểm</span>
-                    	</div>
-                    </div>
-                </div>
-                
-                <!-- Lớp 12 -->
-				<?php $idx1 = rand(0, count($this->class_12) - 1);?>
-				<?php $idx2 = rand(0, count($this->class_12) - 1);?>
-				<?php $idx3 = rand(0, count($this->class_12) - 1);?>
-				<?php $idx4 = rand(0, count($this->class_12) - 1);?>
-				<?php $idx5 = rand(0, count($this->class_12) - 1);?>
-				<?php $idxArr = array($idx2, $idx3, $idx4, $idx5);?>
-				
-                <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
-                    <a href="#"><span class="tile-group-title fg-orange">Trắc nghiệm lớp 12 <span class="icon-arrow-right-5"></span></span></a>
-                    <div class="tile quadro double-vertical live" id="tile1">
-                    	<div class="title-content image">
-                    		<input id="tile_name1" type="hidden" value="<?php echo $this->class_12[$idx1]['major_name'] . ",lop12," . $this->class_12[$idx1]['major_id'] . $this->class_12[$idx1]['class_id'] . $this->class_12[$idx1]['submajor_id'];?>">
-                    		<img src="<?php echo $this->class_12[$idx1]['submajor_img'];?>" class="span8">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx1]['submajor_name'];?></span>
-                    	</div>
-                    </div>
-                    <?php $tileIdx = 2;?>
-                    <?php foreach ($idxArr as $idx): ?>
-                    	<div class="tile double live" id="tile<?php echo $tileIdx;?>">
-	                    	<div class="title-content image">
-	                    		<input id="tile_name<?php echo $tileIdx?>" type="hidden" value="<?php echo $this->class_12[$idx]['major_name'] . ",lop12," . $this->class_12[$idx]['major_id'] . $this->class_12[$idx]['class_id'] . $this->class_12[$idx]['submajor_id'];?>">
-	                    		<img src="<?php echo $this->class_12[$idx]['submajor_img'];?>" class="span4">
-	                    	</div>
-	                    	<div class="brand bg-dark opacity">
-	                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx]['submajor_name'];?></span>
-	                    	</div>
-                    	</div>
-                    <?php $tileIdx++;?>
-                    <?php endforeach;?>
-                </div>
 
-                <!-- Lớp 11 -->
-                <?php $idx6 = rand(0, count($this->class_11) - 1);?>
-				<?php $idx7 = rand(0, count($this->class_11) - 1);?>
-				<?php $idx8 = rand(0, count($this->class_11) - 1);?>
-				<?php $idx9 = rand(0, count($this->class_11) - 1);?>
-				<?php $idx10 = rand(0, count($this->class_11) - 1);?>
-                <?php $idxArr = array($idx7, $idx8, $idx9, $idx10); ?>
+<div class="tile-area no-padding clearfix">
+	<!-- Lớp 12 -->
+	<?php $idx1 = rand(0, count($this->class_12) - 1);?>
+	<?php $idx2 = rand(0, count($this->class_12) - 1);?>
+	<?php $idx3 = rand(0, count($this->class_12) - 1);?>
+	<?php $idx4 = rand(0, count($this->class_12) - 1);?>
+	<?php $idx5 = rand(0, count($this->class_12) - 1);?>
+	<?php $idxArr = array($idx2, $idx3, $idx4, $idx5);?>
+				
+    <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
+    	<a href="#"><span class="tile-group-title fg-orange">Trắc nghiệm lớp 12 <span class="icon-arrow-right-5"></span></span></a>
+        <div class="tile quadro double-vertical live" id="tile1">
+        	<div class="title-content image">
+            	<input id="tile_name1" type="hidden" value="<?php echo $this->class_12[$idx1]['major_name'] . ",lop12," . $this->class_12[$idx1]['major_id'] . $this->class_12[$idx1]['class_id'] . $this->class_12[$idx1]['submajor_id'];?>">
+                <img src="<?php echo $this->class_12[$idx1]['submajor_img'];?>" class="span8">
+            </div>
+			<div class="brand bg-dark opacity">
+        		<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx1]['submajor_name'];?></span>
+        	</div>
+		</div>
+	<?php $tileIdx = 2;?>
+    <?php foreach ($idxArr as $idx): ?>
+    	<div class="tile double live" id="tile<?php echo $tileIdx;?>">
+        	<div class="title-content image">
+            	<input id="tile_name<?php echo $tileIdx?>" type="hidden" value="<?php echo $this->class_12[$idx]['major_name'] . ",lop12," . $this->class_12[$idx]['major_id'] . $this->class_12[$idx]['class_id'] . $this->class_12[$idx]['submajor_id'];?>">
+                <img src="<?php echo $this->class_12[$idx]['submajor_img'];?>" class="span4">
+			</div>
+            <div class="brand bg-dark opacity">
+            	<span class="text">Bài trắc nghiệm: <?php echo $this->class_12[$idx]['submajor_name'];?></span>
+			</div>
+		</div>
+	<?php $tileIdx++;?>
+    <?php endforeach;?>
+	</div>        
+
+	<!-- Lớp 11 -->
+	<?php $idx6 = rand(0, count($this->class_11) - 1);?>
+	<?php $idx7 = rand(0, count($this->class_11) - 1);?>
+	<?php $idx8 = rand(0, count($this->class_11) - 1);?>
+	<?php $idx9 = rand(0, count($this->class_11) - 1);?>
+	<?php $idx10 = rand(0, count($this->class_11) - 1);?>
+    <?php $idxArr = array($idx7, $idx8, $idx9, $idx10); ?>
                 
-                <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
-                    <a href="#"><span class="tile-group-title fg-cobalt">Trắc nghiệm lớp 11 <span class="icon-arrow-right-5"></span></span></a>
-                    <div class="tile quadro double-vertical live" id="tile6">
-                    	<div class="title-content image">
-                    		<input id="tile_name6" type="hidden" value="<?php echo $this->class_11[$idx6]['major_name'] . ",lop11," . $this->class_11[$idx6]['major_id'] . $this->class_11[$idx6]['class_id'] . $this->class_11[$idx6]['submajor_id'];?>">
-                    		<img src="<?php echo $this->class_11[$idx6]['submajor_img'];?>" class="span8">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx6]['submajor_name'];?></span>
-                    	</div>
-                    </div>                    
-                    <?php $tileIdx = 7;?>
-                    <?php foreach ($idxArr as $idx): ?>
-                    	<div class="tile double live"  id="tile<?php echo $tileIdx;?>">
-	                    	<div class="title-content image">
-	                    		<input id="tile_name<?php echo $tileIdx?>" type="hidden" value="<?php echo $this->class_11[$idx]['major_name'] . ",lop11," . $this->class_11[$idx]['major_id'] . $this->class_11[$idx]['class_id'] . $this->class_11[$idx]['submajor_id'];?>">
-	                    		<img src="<?php echo $this->class_11[$idx]['submajor_img'];?>" class="span4">
-	                    	</div>
-	                    	<div class="brand bg-dark opacity">
-	                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx]['submajor_name'];?></span>
-	                    	</div>
-                    	</div>
-                    	<?php $tileIdx++;?>
-                    <?php endforeach;?>
-                </div>
+	<div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
+    	<a href="#"><span class="tile-group-title fg-cobalt">Trắc nghiệm lớp 11 <span class="icon-arrow-right-5"></span></span></a>
+        <div class="tile quadro double-vertical live" id="tile6">
+        	<div class="title-content image">
+            	<input id="tile_name6" type="hidden" value="<?php echo $this->class_11[$idx6]['major_name'] . ",lop11," . $this->class_11[$idx6]['major_id'] . $this->class_11[$idx6]['class_id'] . $this->class_11[$idx6]['submajor_id'];?>">
+                <img src="<?php echo $this->class_11[$idx6]['submajor_img'];?>" class="span8">
+			</div>
+			<div class="brand bg-dark opacity">
+            	<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx6]['submajor_name'];?></span>
+			</div>
+		</div>                    
+	<?php $tileIdx = 7;?>
+    <?php foreach ($idxArr as $idx): ?>
+    	<div class="tile double live"  id="tile<?php echo $tileIdx;?>">
+        	<div class="title-content image">
+            	<input id="tile_name<?php echo $tileIdx?>" type="hidden" value="<?php echo $this->class_11[$idx]['major_name'] . ",lop11," . $this->class_11[$idx]['major_id'] . $this->class_11[$idx]['class_id'] . $this->class_11[$idx]['submajor_id'];?>">
+                <img src="<?php echo $this->class_11[$idx]['submajor_img'];?>" class="span4">
+			</div>
+			<div class="brand bg-dark opacity">
+				<span class="text">Bài trắc nghiệm: <?php echo $this->class_11[$idx]['submajor_name'];?></span>
+			</div>
+		</div>
+	<?php $tileIdx++;?>
+    <?php endforeach;?>
+	</div>
                 
                 <!-- Lớp 10 -->
-                <?php $idx11 = rand(0, count($this->class_10) - 1);?>
-				<?php $idx12 = rand(0, count($this->class_10) - 1);?>
-				<?php $idx13 = rand(0, count($this->class_10) - 1);?>
-				<?php $idx14 = rand(0, count($this->class_10) - 1);?>
-				<?php $idx15 = rand(0, count($this->class_10) - 1);?>
-				<?php $idxArr = array($idx12, $idx13, $idx14, $idx15);?>
+	<?php $idx11 = rand(0, count($this->class_10) - 1);?>
+	<?php $idx12 = rand(0, count($this->class_10) - 1);?>
+	<?php $idx13 = rand(0, count($this->class_10) - 1);?>
+	<?php $idx14 = rand(0, count($this->class_10) - 1);?>
+	<?php $idx15 = rand(0, count($this->class_10) - 1);?>
+	<?php $idxArr = array($idx12, $idx13, $idx14, $idx15);?>
                 
-                <div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
-                    <a href="#"><span class="tile-group-title fg-yellow">Trắc nghiệm lớp 10 <span class="icon-arrow-right-5"></span></span></a>
-                    <div class="tile quadro double-vertical live"  id="tile11">
-                    	<div class="title-content image">
-                    		<input id="tile_name11" type="hidden" value="<?php echo $this->class_10[$idx11]['major_name'] . ",lop10," . $this->class_10[$idx11]['major_id'] . $this->class_10[$idx11]['class_id'] . $this->class_10[$idx11]['submajor_id'];?>">
-                    		<img src="<?php echo $this->class_10[$idx11]['submajor_img'];?>" class="span8">
-                    	</div>
-                    	<div class="brand bg-dark opacity">
-                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx11]['submajor_name'];?></span>
-                    	</div>
-                    </div>
+	<div class="tile-group no-margin no-padding1 clearfix" style="width: 100%;">
+		<a href="#"><span class="tile-group-title fg-yellow">Trắc nghiệm lớp 10 <span class="icon-arrow-right-5"></span></span></a>
+        <div class="tile quadro double-vertical live"  id="tile11">
+        	<div class="title-content image">
+            	<input id="tile_name11" type="hidden" value="<?php echo $this->class_10[$idx11]['major_name'] . ",lop10," . $this->class_10[$idx11]['major_id'] . $this->class_10[$idx11]['class_id'] . $this->class_10[$idx11]['submajor_id'];?>">
+                <img src="<?php echo $this->class_10[$idx11]['submajor_img'];?>" class="span8">
+			</div>
+            <div class="brand bg-dark opacity">
+            	<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx11]['submajor_name'];?></span>
+			</div>
+		</div>
                     
-                    <?php $tileIdx = 12;?>
-                    <?php foreach ($idxArr as $idx): ?>
-                    	<div class="tile double live"  id="tile<?php echo $tileIdx;?>">
-	                    	<div class="title-content image">
-	                    		<input id="tile_name<?php echo $tileIdx?>" type="hidden" value="<?php echo $this->class_10[$idx]['major_name'] . ",lop10," . $this->class_10[$idx]['major_id'] . $this->class_10[$idx]['class_id'] . $this->class_10[$idx]['submajor_id'];?>">
-	                    		<img src="<?php echo $this->class_10[$idx]['submajor_img'];?>" class="span4">
-	                    	</div>
-	                    	<div class="brand bg-dark opacity">
-	                    		<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx]['submajor_name'];?></span>
-	                    	</div>
-	                    </div>
-                    	<?php $tileIdx++;?>
-                    <?php endforeach;?>
-                </div>
-            </div>
+		<?php $tileIdx = 12;?>
+	    <?php foreach ($idxArr as $idx): ?>
+		<div class="tile double live"  id="tile<?php echo $tileIdx;?>">
+	    	<div class="title-content image">
+	        	<input id="tile_name<?php echo $tileIdx?>" type="hidden" value="<?php echo $this->class_10[$idx]['major_name'] . ",lop10," . $this->class_10[$idx]['major_id'] . $this->class_10[$idx]['class_id'] . $this->class_10[$idx]['submajor_id'];?>">
+	            <img src="<?php echo $this->class_10[$idx]['submajor_img'];?>" class="span4">
+			</div>
+	        <div class="brand bg-dark opacity">
+	        	<span class="text">Bài trắc nghiệm: <?php echo $this->class_10[$idx]['submajor_name'];?></span>
+			</div>
+		</div>
+		<?php $tileIdx++;?>
+	    <?php endforeach;?>
+    </div>
+</div>
             
 <script type="text/javascript">
 	$(document).ready(function(){

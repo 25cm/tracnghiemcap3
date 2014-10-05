@@ -1,8 +1,3 @@
-#AuthType Basic
-#AuthName "restricted area"
-#AuthUserFile /var/www/.htpasswd
-#require valid-user
-
 #php_value upload_max_filesize 1000M
 #php_value max_execution_time 10000
 #php_value post_max_size 1000M
@@ -19,10 +14,6 @@ SetEnv APPLICATION_PATH "D:/projects/tracnghiemcap3/application"
 
 RewriteEngine On
 RewriteBase /
-
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{HTTP_USER_AGENT} ^.*(DoCoMo|KDDI|DDIPOKET|UP.Browser|J-PHONE|Vodafone|SoftBank|Googlebot-Mobile).*$
-#RewriteRule .* mobile.php
 
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]

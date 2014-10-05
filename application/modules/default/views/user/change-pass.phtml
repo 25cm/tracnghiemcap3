@@ -1,1 +1,51 @@
-<?php
+<?php $auth = Zend_Auth::getInstance();?>
+<form action="/user/confirm-change-pass" method="post">
+<fieldset>
+	<legend>Đổi mật khẩu</legend>
+    <label>Mật khẩu hiện tại&nbsp;<span class="required">*</span></label>
+    <div class="input-control password size4" data-role="input-control">
+    	<?php echo $this->formPassword('current_password', $this->request->current_password, array('placeholder' => 'type password')); ?>
+    	<?php echo $this->formError('current_password');?>
+	</div>
+	<label>Mật khẩu mới&nbsp;<span class="required">*</span></label>
+    <div class="input-control password size4" data-role="input-control">
+    	<?php echo $this->formPassword('password', $this->request->password, array('placeholder' => 'type password')); ?>
+    	<?php echo $this->formError('password');?>
+	</div>
+	<label class="col-lg-3 control-label">Xác nhận mật khẩu&nbsp;<span class="required">*</span></label>
+    <div class="input-control password size4" data-role="input-control">
+    	<?php echo $this->formPassword('retype_password', $this->request->retype_password, array('placeholder' => 're-type password')); ?>
+    	<?php echo $this->formError('retype_password');?>
+	</div>
+
+	<div class="clearfix"></div>
+    <div class="space15"></div>
+
+    <input id="submitBtn" type="submit" class="info" value="Đổi mật khẩu">&nbsp;&nbsp;
+    <input type="reset" class="info" value="Nhập lại">
+
+    <div style="margin-top: 20px"></div>
+
+</fieldset>                    
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#submitBtn').click(function(){
+    	var currentPsw = $('#current_password').val();
+        var psw = $('#password').val();
+        var confirmPsw = $('#retype_password').val();
+        var dbPsw = '<?php echo $auth->getIdentity()->password;?>';
+		
+		if ($.md5(currentPsw) != dbPsw) {
+			alert('Mật khẩu hiện tại không chính xác!');
+			return false;
+		}
+        
+        if (psw != confirmPsw) {
+			alert('Mật khẩu xác nhận không đúng!');
+			return false;
+        }
+    });
+});
+</script>
