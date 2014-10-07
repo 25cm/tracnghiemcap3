@@ -55,7 +55,12 @@ class AuthController extends Controller {
     				$ns->setExpirationSeconds(1*60*60); // Life for 1 hour
     			}    			
     			
-    			$this->_redirect('home/');
+    			$auth = Zend_Auth::getInstance();
+    			if ($auth->getIdentity()->user_type === '1') {
+    				$this->_redirect('/admin');
+    			} else {
+    				$this->_redirect('home/');
+    			}
     		} else {
     			// Login failed!
     			$this->_forward('/error');

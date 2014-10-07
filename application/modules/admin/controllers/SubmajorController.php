@@ -11,6 +11,13 @@ class Admin_SubmajorController extends Controller {
 	 * indexAction
 	 */
 	public function indexAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		$this->_forward('/list');
 	}
 	
@@ -18,7 +25,13 @@ class Admin_SubmajorController extends Controller {
 	 * listAction
 	 */
 	public function listAction() {
-		// TODO
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		$this->_helper->viewRenderer->setNoRender();
 	}
 	
@@ -26,6 +39,13 @@ class Admin_SubmajorController extends Controller {
 	 * addAction
 	 */
 	public function addAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		// Get majors info
 		$majors = Majors::getInstance()->getMajorsInfo();
 		$majorLst = array();
@@ -46,6 +66,13 @@ class Admin_SubmajorController extends Controller {
 	 * confirmAddAction
 	 */
 	public function confirmAddAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		if ($this->_request->isPost()) {
 			$params = $this->_request->getParams();
 			if ($this->saveMajors($params)) {

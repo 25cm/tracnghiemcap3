@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2014 at 12:07 AM
+-- Generation Time: Oct 06, 2014 at 09:48 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -98,7 +98,6 @@ INSERT INTO `majors` (`major_id`, `major_name`, `insert_dt`, `insert_user`, `upd
 
 CREATE TABLE IF NOT EXISTS `points` (
   `user_id` int(5) NOT NULL AUTO_INCREMENT,
-  `major_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
   `class_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
   `point` decimal(10,0) NOT NULL DEFAULT '0',
   `insert_dt` date NOT NULL,
@@ -106,7 +105,19 @@ CREATE TABLE IF NOT EXISTS `points` (
   `update_dt` date NOT NULL,
   `update_user` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=61 ;
+
+--
+-- Dumping data for table `points`
+--
+
+INSERT INTO `points` (`user_id`, `class_id`, `point`, `insert_dt`, `insert_user`, `update_dt`, `update_user`) VALUES
+(54, '12', '20', '2014-10-06', 'acc001', '2014-10-06', 'acc001'),
+(55, '11', '4', '2014-10-06', 'acc002', '2014-10-06', 'acc002'),
+(56, '12', '3', '2014-10-06', 'acc003', '2014-10-06', 'acc003'),
+(57, '12', '27', '2014-10-06', 'acc004', '2014-10-06', 'acc004'),
+(59, '12', '7', '2014-10-06', 'acc005', '2014-10-06', 'acc005'),
+(60, '12', '4', '2014-10-06', 'acc006', '2014-10-06', 'acc006');
 
 -- --------------------------------------------------------
 
@@ -508,25 +519,26 @@ CREATE TABLE IF NOT EXISTS `users` (
   `class_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `user_type` varchar(1) COLLATE utf8_unicode_ci NOT NULL COMMENT '1: admin, 2: standard user',
-  `avatar_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `delete_flg` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
   `insert_dt` date NOT NULL,
   `insert_user` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `update_dt` date NOT NULL,
   `update_user` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=61 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `email`, `verified`, `verification_code`, `phone_number`, `class_id`, `password`, `user_type`, `avatar_path`, `delete_flg`, `insert_dt`, `insert_user`, `update_dt`, `update_user`) VALUES
-(46, 'caubemuongte', 'anhnv1310@gmail.com', '1', '9c9d4e3123116e60117dd186322e66a2', '09180002911', '10', 'HdwPxSF6s8', '0', NULL, '0', '2014-09-19', '', '2014-09-19', ''),
-(47, 'anhnv13', 'anhnv1310@gmail.com', '1', 'd5107f203a9083e41fbbd8e3426c1ae6', '', '10', 'ca9118c9cf3efca03aa46c887d52c192', '0', NULL, '0', '2014-09-19', '', '2014-09-19', ''),
-(48, 'chubebanchim', 'anhnv1310@gmail.com', '1', 'ba61f28972e24f239f74d8574870dff4', '0123456789', '12', 'ca9118c9cf3efca03aa46c887d52c192', '0', NULL, '0', '2014-09-19', '', '2014-09-19', ''),
-(49, 'chimtrau', 'anhnv1310@gmail.com', '0', 'd5e1c3b6b23bdb7f8a8b5068f1c7b98d', '01590001111', '12', 'ca9118c9cf3efca03aa46c887d52c192', '0', NULL, '0', '2014-09-22', '', '2014-09-22', ''),
-(51, 'tranvanchuong', 'anhnv1310@gmail.com', '0', '9feb1ea579bfd63cd50b84b2649eb6dd', '01696803198', '10', 'ca9118c9cf3efca03aa46c887d52c192', '0', NULL, '0', '2014-09-22', '', '2014-09-22', '');
+INSERT INTO `users` (`user_id`, `user_name`, `email`, `verified`, `verification_code`, `phone_number`, `class_id`, `password`, `user_type`, `delete_flg`, `insert_dt`, `insert_user`, `update_dt`, `update_user`) VALUES
+(54, 'acc001', 'anhnv1310@gmail.com', '1', '335584df2463c0cc0854ffa1a9126045', '01696803198', '11', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '2014-10-04', '', '2014-10-04', ''),
+(55, 'acc002', 'anhnv1310@gmail.com', '1', '089024c60aac555a1f9e46ce900f4dae', '', '10', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '2014-10-05', '', '2014-10-05', ''),
+(56, 'acc003', 'anhnv1310@gmail.com', '1', 'a7308296e73ad88680c3c635116c8470', '01696803198', '10', 'ca9118c9cf3efca03aa46c887d52c192', '0', '0', '2014-10-05', '', '2014-10-05', ''),
+(57, 'acc004', 'anhnv1310@gmail.com', '1', 'e6987e431524c9bc27fe8466293e5743', '', '10', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '2014-10-05', '', '2014-10-05', ''),
+(58, 'admin01', 'anhnv1310@gmail.com', '1', '7778092fbb7c7fb17b949563a9728752', '0123456789', '10', 'e10adc3949ba59abbe56e057f20f883e', '1', '0', '2014-10-06', '', '2014-10-06', ''),
+(59, 'acc005', 'anhnv1310@gmail.com', '1', 'e6987e431524c9bc27fe8466293e5743', '', '10', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '2014-10-05', '', '2014-10-05', ''),
+(60, 'acc006', 'anhnv1310@gmail.com', '1', 'e6987e431524c9bc27fe8466293e5743', '', '10', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '2014-10-05', '', '2014-10-05', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

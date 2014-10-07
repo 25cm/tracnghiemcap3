@@ -140,10 +140,11 @@
 
 #rank {
 	display: block;
-	margin-bottom: 20px 20px;
+	margin-right: 109px;
 	float: right;
 	width: 300px;
-	border: 1px solid #F8F0F0;
+	/*border: 1px solid #F8F0F0;*/
+	padding: 15px;
 }
 
 #profile_area {

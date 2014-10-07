@@ -42,7 +42,10 @@ class Points extends Zend_Db_Table {
 		$sql = $this->select()
 					->from(array('p' => 'Points'))->setIntegrityCheck(false)
 					->join(array('u' => 'Users'), 'p.user_id = u.user_id')
-					->order('p.point desc');
+					->where('user_type = 0')
+					->order('p.point desc')
+					->order('u.user_name asc')
+					->limit(5);
 		
 		return $this->fetchAll($sql);
 	}

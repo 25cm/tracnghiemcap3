@@ -11,6 +11,13 @@ class Admin_QuestionController extends Controller {
 	 * indexAction
 	 */
 	public function indexAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		$this->_forward('/list');
 	}
 	
@@ -18,7 +25,13 @@ class Admin_QuestionController extends Controller {
 	 * listAction
 	 */
 	public function listAction() {
-		echo __METHOD__;
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		$this->_helper->viewRenderer->setNoRender();
 	}
 	
@@ -26,6 +39,13 @@ class Admin_QuestionController extends Controller {
 	 * addAction
 	 */
 	public function addAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		// Get majors info
 		$majors = Majors::getInstance()->getMajorsInfo();
 		$majorLst = array();
@@ -42,8 +62,9 @@ class Admin_QuestionController extends Controller {
 		}
 		$this->view->classes = $classLst;
 		
-		// Get submajors info
-		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
+		// Get submajors info getSubmajorsInfo
+		$subMajors = Submajors::getInstance()->getSubmajorsInfo();
+// 		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
 		$subMajorLst = array();
 		foreach ($subMajors as $s) {
 			$subMajorLst[$s->submajor_id] = $s->submajor_name;
@@ -55,6 +76,13 @@ class Admin_QuestionController extends Controller {
 	 * confirmAddAction
 	 */
 	public function confirmAddAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
+		
 		if ($this->_request->isPost()) {
 			$params = $this->_request->getParams();
 			if ($this->saveQuestions($params)) {
@@ -68,6 +96,12 @@ class Admin_QuestionController extends Controller {
 	}
 	
 	public function changeAction() {
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			return $this->_redirect('/auth/login');
+		} else if ($auth->getIdentity()->user_type !== '1') {
+			return $this->_redirect('/error');
+		}
 	    
 	    if ($this->getRequest()->isXmlHttpRequest()) {
 	        $arr = array("a", "b", "c", "d");

@@ -68,6 +68,7 @@ class ReactiveController extends Controller {
 		$html .= '			Bạn vui lòng click vào';
 		$html .= '			<a href="' . My_Registry::getConfig()->system->fqdn . '/activate/activate?code=' . $verificationCd . '">đây</a>';
 		$html .= '			để kích hoạt lại tài khoản.<br>';
+		$html .= '			Hoặc copy đường dẫn sau và dán vào trình duyệt: <pre>' . My_Registry::getConfig()->system->fqdn . '/activate/activate?code=' . $verificationCd .'</pre>';
 		$html .= '			Chúc bạn một ngày vui vẻ!';
 		$html .= '			<div style="margin-left: 400px; margin-top: 30px; font-style: italic">';
 		$html .= '				BQT tracnghiemcap3.com';

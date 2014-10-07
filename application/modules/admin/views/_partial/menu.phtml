@@ -1,3 +1,6 @@
+<?php $auth = Zend_Auth::getInstance();?>
+<!-- Admin menu -->
+<?php if ($auth->hasIdentity() && $auth->getIdentity()->user_type == '1'):?>
 <nav class="horizontal-menu">
     <ul>
         <li>
@@ -21,3 +24,61 @@
         <!-- More menus go here -->
     </ul>
 </nav>
+<!-- Standard menu -->
+<?php else: ?>
+<div class="menu">
+<nav class="horizontal-menu">
+    <ul>
+        <li>
+        	<a class="dropdown-toggle" href="#">Vật lý</a>
+        	<ul class="dropdown-menu dark opacity" data-show="hover">
+        		<li><a href="/physical/lop10">Lớp 10</a></li>
+        		<li><a href="/physical/lop11">Lớp 11</a></li>
+        		<li><a href="/physical/lop12">Lớp 12</a></li>
+        	</ul>
+        </li>
+        <li>
+        	<a class="dropdown-toggle" href="#">Hóa học</a>
+        	<ul class="dropdown-menu dark opacity" data-show="hover">
+        		<li><a href="/chemical/lop10">Lớp 10</a></li>
+        		<li><a href="/chemical/lop11">Lớp 11</a></li>
+        		<li><a href="/chemical/lop12">Lớp 12</a></li>
+        	</ul>
+        </li>
+        <li>
+        	<a class="dropdown-toggle" href="#">Sinh học</a>
+        	<ul class="dropdown-menu dark opacity" data-show="hover">
+        		<li><a href="/biological/lop10">Lớp 10</a></li>
+        		<li><a href="/biological/lop11">Lớp 11</a></li>
+        		<li><a href="/biological/lop12">Lớp 12</a></li>
+        	</ul>
+        </li>
+        <li>
+        	<a class="dropdown-toggle" href="#">Tiếng Anh</a>
+        	<ul class="dropdown-menu dark opacity" data-show="hover">
+        		<li><a href="/english/lop10">Lớp 10</a></li>
+        		<li><a href="/english/lop11">Lớp 11</a></li>
+        		<li><a href="/english/lop12">Lớp 12</a></li>
+        	</ul>
+        </li>
+        <li>
+        	<a class="dropdown-toggle" href="#">Địa lý</a>
+        	<ul class="dropdown-menu dark opacity" data-show="hover">
+        		<li><a href="/geographic/lop10">Lớp 10</a></li>
+        		<li><a href="/geographic/lop11">Lớp 11</a></li>
+        		<li><a href="/geographic/lop12">Lớp 12</a></li>
+        	</ul>
+        </li>
+        <li>
+        	<a href="/mock-test">Thi thử đại học</a>
+        </li>
+        <li>
+        	<a href="/contact">Liên hệ</a>
+        </li>
+    </ul>
+</nav>
+</div>
+<?php endif;?>
+
+
+
