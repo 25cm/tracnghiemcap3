@@ -3,12 +3,12 @@
 	<legend>Thêm câu hỏi</legend>
 	<label>Lớp&nbsp;<span class="required">*</span></label>
     <div class="input-control select size4">
-    	<?php echo $this->formSelect('class_id', null, array('id' => 'classCb'), $this->classes);?>
+    	<?php echo $this->formSelect('class_id', null, array('name' => 'class_id', 'onchange'=>'AjaxFunction();'), $this->classes);?>
     	<?php echo $this->formError('class_id')?>
 	</div>
     <label>Lĩnh vực câu hỏi&nbsp;<span class="required">*</span></label>
     <div class="input-control select size4">
-    	<?php echo $this->formSelect('major_id', null, array('id' => 'majorCb', 'onchange' => 'AjaxFunction();'), $this->majors);?>
+    	<?php echo $this->formSelect('major_id', null, array('name' => 'major_id', 'onchange'=>'AjaxFunction();'), $this->majors);?>
     	<?php echo $this->formError('major_id')?>
     </div>
     <label>Lĩnh vực con&nbsp;<span class="required">*</span></label>
@@ -60,38 +60,43 @@
 <script type="text/javascript">
 function AjaxFunction()
 {
-    var httpxml;
+     var httpxml;
 
     // Firefox, Opera 8.0+, Safari
     httpxml=new XMLHttpRequest();
-      
-    function stateck() {
-        if(httpxml.readyState==4) {
-//             alert(httpxml.responseText);
-//             var myarray = JSON.parse(httpxml.responseText);
-//             var myarray=myarray.split(",");
-//             for(j=document.addForm.submajor_id.options.length;j>0;j--)
-//             {
-//                 document.addForm.submajor_id.remove(j-1);
-//             }
-//             for (i=0;i<myarray.length;i++)
-//             {
-//                 var optn = document.createElement("OPTION");
-//                 optn.text = myarray[i];
-//                 optn.value = myarray[i];
-//                 document.addForm.submajor_id.options.add(optn);
-//             }
-        }
-    }
-    var url="/question/change/";
-    var classId = $("#classCb").val();
-    var majorId = $("#majorCb").val();
-    //var country_id=document.getElementById('s1').value;
-    //url=url+"?class_id=" + classId + "&major_id=" + majorId;alert(url);
-    //url=url+"&sid="+Math.random();
-    httpxml.onreadystatechange=stateck;
-    httpxml.open("GET", "<?php echo $this->url(array('controller' => 'question', 'action' => 'change'), 'default', true);?>", true);
-//     httpxml.open("GET", url, true);
-    httpxml.send(null);
+  
+function stateck() 
+{
+    if(httpxml.readyState==4)
+      {
+         //alert(httpxml.responseText);
+         var myarray = JSON.parse(httpxml.responseText);
+         var myarray=myarray.split(",");
+         for(j=document.addForm.submajor_id.options.length;j>0;j--)
+          {
+              document.addForm.submajor_id.remove(j-1);
+          }
+
+
+         for (i=0;i<myarray.length;i++)
+         {
+             var optn = document.createElement("OPTION");
+             optn.text = myarray[i];
+             optn.value = myarray[i];
+             document.addForm.submajor_id.options.add(optn);
+
+         } 
+      }
+}
+   var url="/admin/question/change";
+	
+   var class_id=document.getElementById('class_id').value;
+   var major_id=document.getElementById('major_id').value;
+   url=url+"?class_id="+class_id+"&major_id="+major_id;
+   url=url+"&sid="+Math.random();
+   httpxml.onreadystatechange=stateck;
+   //alert(url);
+   httpxml.open("GET",url,true);
+   httpxml.send(null);
 }
 </script>

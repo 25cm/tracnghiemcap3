@@ -95,31 +95,38 @@ class Admin_QuestionController extends Controller {
 		}
 	}
 	
+	/**
+	 * Ajax action
+	 */
 	public function changeAction() {
-		$auth = Zend_Auth::getInstance();
-		if (!$auth->hasIdentity()) {
-			return $this->_redirect('/auth/login');
-		} else if ($auth->getIdentity()->user_type !== '1') {
-			return $this->_redirect('/error');
-		}
+// 		$auth = Zend_Auth::getInstance();
+// 		if (!$auth->hasIdentity()) {
+// 			return $this->_redirect('/auth/login');
+// 		} else if ($auth->getIdentity()->user_type !== '1') {
+// 			return $this->_redirect('/error');
+// 		}
 	    
-	    if ($this->getRequest()->isXmlHttpRequest()) {
-	        $arr = array("a", "b", "c", "d");
-	       echo json_encode($arr);
-	    }
+// 		if ($this->_request->isPost()) {
+		    
+    	    
+// 		}
+		
+		$classId = $this->getParam('class_id');
+		$majorId = $this->getParam('major_id');
+		 
+		// Get submajors info
+		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId($classId, $majorId);
+		$str = '';
+		foreach ($subMajors as $s) {
+		    $str = $str . "$s->submajor_name" . ",";
+		}
+		 
+		$str = substr($str,0,(strLen($str)-1)); // Removing the last char , from the string
+		
+		echo json_encode($str);exit;
 	    
 	    $this->_helper->viewRenderer->setNoRender(true);
-// 	    $classId = $this->_request->getParameter('class_id');
-// 	    $majorId = $this->_request->getParameter('major_id'); echo $classId;
-	    
-// 	    // Get submajors info
-// 		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
-// 	    $str='';
-// 	    foreach ($subMajors as $s) {
-// 	        $str=$str . "$s->submajor_name" . ",";
-// 	    }
-	    
-// 	    $str=substr($str,0,(strLen($str)-1)); // Removing the last char , from the string
+
 	    
 	    
 // 	    echo json_encode($str);
