@@ -63,8 +63,8 @@ class Admin_QuestionController extends Controller {
 		$this->view->classes = $classLst;
 		
 		// Get submajors info getSubmajorsInfo
-		$subMajors = Submajors::getInstance()->getSubmajorsInfo();
-// 		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
+// 		$subMajors = Submajors::getInstance()->getSubmajorsInfo();
+		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId(key($classLst), key($majorLst));
 		$subMajorLst = array();
 		foreach ($subMajors as $s) {
 			$subMajorLst[$s->submajor_id] = $s->submajor_name;
@@ -118,18 +118,14 @@ class Admin_QuestionController extends Controller {
 		$subMajors = Submajors::getInstance()->getSubmajorsByClassIdMajorId($classId, $majorId);
 		$str = '';
 		foreach ($subMajors as $s) {
-		    $str = $str . "$s->submajor_name" . ",";
+		    $str = $str . "$s->submajor_id:" . "$s->submajor_name" . ",";
 		}
 		 
 		$str = substr($str,0,(strLen($str)-1)); // Removing the last char , from the string
 		
 		echo json_encode($str);exit;
 	    
-	    $this->_helper->viewRenderer->setNoRender(true);
-
-	    
-	    
-// 	    echo json_encode($str);
+// 	    $this->_helper->viewRenderer->setNoRender(true);
 	}
 	
 	/**

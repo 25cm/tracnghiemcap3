@@ -69,7 +69,7 @@ function stateck()
 {
     if(httpxml.readyState==4)
       {
-         //alert(httpxml.responseText);
+//          alert(httpxml.responseText);
          var myarray = JSON.parse(httpxml.responseText);
          var myarray=myarray.split(",");
          for(j=document.addForm.submajor_id.options.length;j>0;j--)
@@ -81,8 +81,8 @@ function stateck()
          for (i=0;i<myarray.length;i++)
          {
              var optn = document.createElement("OPTION");
-             optn.text = myarray[i];
-             optn.value = myarray[i];
+             optn.text = myarray[i].substring(myarray[i].indexOf(":") + 1);
+             optn.value = myarray[i].substring(0, myarray[i].indexOf(":"));
              document.addForm.submajor_id.options.add(optn);
 
          } 

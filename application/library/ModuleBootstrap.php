@@ -9,7 +9,6 @@ class ModuleBootstrap extends Zend_Application_Module_Bootstrap {
     protected function _initModule() {
         if ($this->_isModuleBootstrap()) {
             $this->__initConfig();
-            $this->__initRoute();
         }
     }
 
@@ -21,19 +20,7 @@ class ModuleBootstrap extends Zend_Application_Module_Bootstrap {
             My_Registry::setConfig(new Zend_Config(array_merge(My_Registry::getConfig()->toArray(), $config->toArray())));
         }
     }
-
-    private function __initRoute() {
-        $uri = $this->_request->getServer('REQUEST_URI');
-        $uri = preg_replace('/\?.*/', "", $uri);
-        if ($uri == '/') return;
-        $routePath = $this->_getConfigDirectory() . 'route.ini';
-        if(file_exists($routePath)) {
-            $route = new Zend_Config_Ini($routePath);
-            $this->setOptions($route->toArray());
-            return;
-        }
-    }
-
+    
     private function __getModuleNameFromRequest() {
         if (empty($this->_moduleNameFromRequest)) {
             $request = new Zend_Controller_Request_Http();

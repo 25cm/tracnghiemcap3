@@ -47,4 +47,12 @@ class Utility {
 		
 		return $majorVi;
 	}
+	
+	/**
+	 *
+	 * @param string $str
+	 */
+	public function getHashCode($str) {
+		return md5($str);
+	}
 }

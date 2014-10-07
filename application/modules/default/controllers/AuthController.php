@@ -39,7 +39,7 @@ class AuthController extends Controller {
     	if ($this->_request->isPost()) {
     		// Get username and password
     		$username = $this->_request->getParam('username');
-    		$password = EnCode::getInstance()->getHashCode($this->_request->getParam('password'));
+    		$password = Utility::getInstance()->getHashCode($this->_request->getParam('password'));
     		$remember = $this->_request->getParam('remember');
     		
     		// Authenticate

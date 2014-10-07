@@ -37,13 +37,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
 
     /**
-     * _initPlugin
-     */
-    protected function _initPlugin() {
-        Zend_Controller_Front::getInstance()->registerPlugin(new Controller_Plugin_Application());
-    }
-
-    /**
      * _initDatabase
      */
     protected function _initDatabase() {
@@ -91,7 +84,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         elseif(!is_array($aOld) && (strlen($aOld) == 0 || $aOld == 0)) {
             $aOld = $aNew;
         }
-
+                
         return($aOld);
     }
 

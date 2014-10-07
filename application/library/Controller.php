@@ -58,6 +58,10 @@ class Controller extends My_Controller_Action {
     private function getValidator(){
         $validationConfigPath = MODULE_PATH . '/' . $this->getRequest()->getModuleName() . '/configs/validate/' . $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName() . '.php';
         $validationRules = file_exists($validationConfigPath) ? My_Config::loadFile($validationConfigPath) : new My_Config(array());
+        echo "<pre>";
+        print_r($validationRules);
+        echo "</pre>";
+        
         return $validationRules ? $validationRules->toArray() : array();
     }
 

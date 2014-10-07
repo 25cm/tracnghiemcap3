@@ -37,7 +37,7 @@ class UserController extends Controller {
 			$auth = Zend_Auth::getInstance();
 			$newPsw = $this->_request->getParam('password');
 			$user = array();
-			$user['password'] = EnCode::getHashCode($newPsw);
+			$user['password'] = Utility::getInstance()->getHashCode($newPsw);
 			
 			try {
 				$userObj = new Users();
